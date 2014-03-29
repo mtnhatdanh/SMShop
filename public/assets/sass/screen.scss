@@ -1,0 +1,215 @@
+/* Welcome to Compass.
+ * In this file you should write your main styles. (or centralize your imports)
+ * Import this file using the following HTML or equivalent:
+ * <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css" /> */
+
+@import "compass";
+
+@import "social/*.png";
+.facebook {@include social-sprite(facebook)};
+.skype {@include social-sprite(skype)};
+.yahoo {@include social-sprite(ABC)};
+.youtube {@include social-sprite(youtube)};
+
+@import url(http://fonts.googleapis.com/css?family=Lato:300,400,700);
+// @include font-face("codropsicons", font-files("codropsicons.ttf", "codropsicons.eot", "codropsicons.woff"));
+
+// Custom file
+
+html {
+	// height: 100%;
+	overflow-y: scroll;
+	background: #fafafa;
+}
+
+body {
+	background-color: transparent;
+	color:#1a171b;
+	font-family: 'Lato', Calibri, Arial, sans-serif;
+}
+
+
+#bar {
+	position: fixed;
+	left: 0px;
+	right: 0px;
+	height: 34px;
+	background: url(../../assets/img/bg_header_top.png) repeat-x transparent;
+	z-index: 100;
+	ul {
+		list-style: none;
+		width: 100%;
+		max-width: 1170px;
+		height: 24px;
+		margin: 0 auto;
+		letter-spacing: 0.05em;
+		word-spacing: 0.3em;
+		text-transform: uppercase;
+		background: #1A171B;
+		li {
+			&:first-child {background: none;};
+			position: relative;
+			float: right;
+			height: 24px;
+			margin-right: 2px;
+			padding: 0 14px 0 10px;
+			background: transparent url(http://localhost:8080/SMShop/public/assets/img/bg_icons_rightaligned.png) right -203px no-repeat;
+			line-height: 24px;
+			white-space: nowrap;
+			color: #fff;
+			a {
+				font-size: 0.8em;
+				text-decoration: none;
+				color: #fff;
+				&:hover {text-decoration: underline;};
+			}
+		}
+	}
+}
+
+div#header {
+	position: absolute;
+	height: 140px;
+	left: 0;
+	right: 0;
+	top: 0px;
+	z-index: 3;
+	// background: transparent url(http://localhost:8080/SMShop/public/assets/img/bg_header_top.png) repeat-x 0 -40px;
+	div#nav_header {
+		margin-top: 37px;
+	}
+	ul {
+		list-style: none;
+	}
+	#subNav {
+		line-height: 0.8em;
+		margin: 0.2em 0 0.2em 0;
+		li {
+			&:first-child {
+				background: none;
+			};
+			display: inline;
+			padding: 0 0 0 1.6em;
+			background: url(http://localhost:8080/SMShop/public/assets/img/bg_icons.png?10) no-repeat -41px -40px;
+			font-size: 0.8em;
+			letter-spacing: 0.12em;
+			text-transform: uppercase;
+			a {
+				text-decoration: none;
+				color: #1a171b;
+				&:hover {text-decoration: underline};
+			}
+		}
+	}
+	#nav {
+		margin-top: 0.8em;
+		li {
+			&:first-child {
+				background: none;
+			};
+			display: inline;
+			padding: 0 0 0 1.3em;
+			background: url(http://localhost:8080/SMShop/public/assets/img/bg_icons.png?10) no-repeat -41px -37px;
+			font-size: 1.1em;
+			font-weight: bold;
+			letter-spacing: 0.2em;
+			text-transform: uppercase;
+			a {
+				display: inline;
+				margin: 5px;
+				@include transition-property(all);
+				@include transition-duration(0.3s);
+				@include transition-timing-function(ease-in);
+				text-decoration: none;
+				color: #333333;
+				@include single-text-shadow();
+				&:hover {
+					color: #e74c3c;
+					margin: 0 15px 0 15px;
+				};
+				
+			}
+		}
+	}
+}
+
+div#main {
+	position: relative;
+	top: 126px;
+	z-index: 2;
+	div#content {
+		min-height: 1500px;
+		margin-top: -1em;
+		margin-bottom: 2em;
+		background-color: #fff;
+		@include box-shadow(#999 0px 15px 40px);
+	}
+}
+
+div#content {
+	padding: 0.5em 2em 0.5em 2em;
+	a {
+		color:#1a171b;
+		// @include transition-property(all);
+		// @include transition-duration(0.2s);
+		// @include transition-timing-function(ease-in);
+		// &:hover {
+		// 	color: #e74c3c;
+		// }
+	}
+	div#nav_header {
+		margin-bottom: 2em;
+	}
+	div#categories {
+		ul#left_nav {
+			font-weight: bold;
+			>li {
+				margin-bottom: 1em;
+				ul {
+					font-weight: normal;
+					margin-left: 1em;
+				}
+			}
+		}
+	}
+}
+
+div#products_container {
+	margin: 1em 0 1em 0;
+	div.products {
+		padding: 1em;
+		margin-top: 1em;
+		margin-bottom: 2.5em;
+		@include box-shadow(#d3d3d3 0px 1px 2px);
+		&:hover {
+			@include box-shadow(#999 0px 1px 3px);
+		}
+		.buy_button {
+			// position: relative;
+			text-align: center;
+			top:30px;
+			opacity: 0;
+		}
+	}
+}
+
+div#footer {
+	min-height: 200px;
+	padding: 2em 1em 2em 1em;
+	color:#333333;
+	border-top: solid 1px #d3d3d3;
+	ul.social-links li { list-style: none;
+		a {
+			display: block;
+			margin-left: 0.4em;
+			float: right;
+			width: 56px;
+			height: 56px;
+			text-indent: -999px;
+			overflow: hidden;
+			@include transition-property(background-position);
+			@include transition-duration(0.3s);
+			@include transition-timing-function(ease-in);
+		}
+	}
+}

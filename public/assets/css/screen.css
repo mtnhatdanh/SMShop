@@ -1,0 +1,253 @@
+/* Welcome to Compass.
+ * In this file you should write your main styles. (or centralize your imports)
+ * Import this file using the following HTML or equivalent:
+ * <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css" /> */
+@import url(http://fonts.googleapis.com/css?family=Lato:300,400,700);
+/* line 98, social/*.png */
+.social-sprite, .facebook, .skype, .yahoo, .youtube {
+  background: url('../../assets/img/social-s218a4457ed.png') no-repeat; }
+
+/* line 9, ../sass/screen.scss */
+.facebook {
+  background-position: 0 -336px; }
+  /* line 43, ../../../../../../../../Library/Ruby/Gems/2.0.0/gems/compass-0.12.4/frameworks/compass/stylesheets/compass/utilities/sprites/_base.scss */
+  .facebook:hover, .facebook.facebook_hover, .facebook.facebook-hover {
+    background-position: 0 -280px; }
+
+/* line 10, ../sass/screen.scss */
+.skype {
+  background-position: 0 -56px; }
+  /* line 43, ../../../../../../../../Library/Ruby/Gems/2.0.0/gems/compass-0.12.4/frameworks/compass/stylesheets/compass/utilities/sprites/_base.scss */
+  .skype:hover, .skype.skype_hover, .skype.skype-hover {
+    background-position: 0 0; }
+
+/* line 11, ../sass/screen.scss */
+.yahoo {
+  background-position: 0 -224px; }
+  /* line 43, ../../../../../../../../Library/Ruby/Gems/2.0.0/gems/compass-0.12.4/frameworks/compass/stylesheets/compass/utilities/sprites/_base.scss */
+  .yahoo:hover, .yahoo.ABC_hover, .yahoo.ABC-hover {
+    background-position: 0 -392px; }
+
+/* line 12, ../sass/screen.scss */
+.youtube {
+  background-position: 0 -168px; }
+  /* line 43, ../../../../../../../../Library/Ruby/Gems/2.0.0/gems/compass-0.12.4/frameworks/compass/stylesheets/compass/utilities/sprites/_base.scss */
+  .youtube:hover, .youtube.youtube_hover, .youtube.youtube-hover {
+    background-position: 0 -112px; }
+
+/* line 19, ../sass/screen.scss */
+html {
+  overflow-y: scroll;
+  background: #fafafa; }
+
+/* line 25, ../sass/screen.scss */
+body {
+  background-color: transparent;
+  color: #1a171b;
+  font-family: 'Lato', Calibri, Arial, sans-serif; }
+
+/* line 32, ../sass/screen.scss */
+#bar {
+  position: fixed;
+  left: 0px;
+  right: 0px;
+  height: 34px;
+  background: url(../../assets/img/bg_header_top.png) repeat-x transparent;
+  z-index: 100; }
+  /* line 39, ../sass/screen.scss */
+  #bar ul {
+    list-style: none;
+    width: 100%;
+    max-width: 1170px;
+    height: 24px;
+    margin: 0 auto;
+    letter-spacing: 0.05em;
+    word-spacing: 0.3em;
+    text-transform: uppercase;
+    background: #1A171B; }
+    /* line 49, ../sass/screen.scss */
+    #bar ul li {
+      position: relative;
+      float: right;
+      height: 24px;
+      margin-right: 2px;
+      padding: 0 14px 0 10px;
+      background: transparent url(http://localhost:8080/SMShop/public/assets/img/bg_icons_rightaligned.png) right -203px no-repeat;
+      line-height: 24px;
+      white-space: nowrap;
+      color: #fff; }
+      /* line 50, ../sass/screen.scss */
+      #bar ul li:first-child {
+        background: none; }
+      /* line 60, ../sass/screen.scss */
+      #bar ul li a {
+        font-size: 0.8em;
+        text-decoration: none;
+        color: #fff; }
+        /* line 64, ../sass/screen.scss */
+        #bar ul li a:hover {
+          text-decoration: underline; }
+
+/* line 70, ../sass/screen.scss */
+div#header {
+  position: absolute;
+  height: 140px;
+  left: 0;
+  right: 0;
+  top: 0px;
+  z-index: 3;
+  background: transparent url(http://localhost:8080/SMShop/public/assets/img/bg_header_top.png) repeat-x 0 -40px; }
+  /* line 78, ../sass/screen.scss */
+  div#header div#nav_header {
+    margin-top: 37px; }
+  /* line 81, ../sass/screen.scss */
+  div#header ul {
+    list-style: none; }
+  /* line 84, ../sass/screen.scss */
+  div#header #subNav {
+    line-height: 0.8em;
+    margin: 0.2em 0 0.2em 0; }
+    /* line 87, ../sass/screen.scss */
+    div#header #subNav li {
+      display: inline;
+      padding: 0 0 0 1.6em;
+      background: url(http://localhost:8080/SMShop/public/assets/img/bg_icons.png?10) no-repeat -41px -40px;
+      font-size: 0.8em;
+      letter-spacing: 0.12em;
+      text-transform: uppercase; }
+      /* line 88, ../sass/screen.scss */
+      div#header #subNav li:first-child {
+        background: none; }
+      /* line 97, ../sass/screen.scss */
+      div#header #subNav li a {
+        text-decoration: none;
+        color: #1a171b; }
+        /* line 100, ../sass/screen.scss */
+        div#header #subNav li a:hover {
+          text-decoration: underline; }
+  /* line 104, ../sass/screen.scss */
+  div#header #nav {
+    margin-top: 0.8em; }
+    /* line 106, ../sass/screen.scss */
+    div#header #nav li {
+      display: inline;
+      padding: 0 0 0 1.3em;
+      background: url(http://localhost:8080/SMShop/public/assets/img/bg_icons.png?10) no-repeat -41px -37px;
+      font-size: 1.1em;
+      font-weight: bold;
+      letter-spacing: 0.2em;
+      text-transform: uppercase; }
+      /* line 107, ../sass/screen.scss */
+      div#header #nav li:first-child {
+        background: none; }
+      /* line 117, ../sass/screen.scss */
+      div#header #nav li a {
+        display: inline;
+        margin: 5px;
+        -webkit-transition-property: all;
+        -moz-transition-property: all;
+        -o-transition-property: all;
+        transition-property: all;
+        -webkit-transition-duration: 0.3s;
+        -moz-transition-duration: 0.3s;
+        -o-transition-duration: 0.3s;
+        transition-duration: 0.3s;
+        -webkit-transition-timing-function: ease-in;
+        -moz-transition-timing-function: ease-in;
+        -o-transition-timing-function: ease-in;
+        transition-timing-function: ease-in;
+        text-decoration: none;
+        color: #333333;
+        text-shadow: 0px 0px 1px #aaaaaa; }
+        /* line 126, ../sass/screen.scss */
+        div#header #nav li a:hover {
+          color: #e74c3c;
+          margin: 0 15px 0 15px; }
+
+/* line 136, ../sass/screen.scss */
+div#main {
+  position: relative;
+  top: 126px;
+  z-index: 2; }
+  /* line 140, ../sass/screen.scss */
+  div#main div#content {
+    min-height: 1500px;
+    margin-top: -1em;
+    margin-bottom: 2em;
+    background-color: #fff;
+    -webkit-box-shadow: #999999 0px 15px 40px;
+    -moz-box-shadow: #999999 0px 15px 40px;
+    box-shadow: #999999 0px 15px 40px; }
+
+/* line 149, ../sass/screen.scss */
+div#content {
+  padding: 0.5em 2em 0.5em 2em; }
+  /* line 151, ../sass/screen.scss */
+  div#content a {
+    color: #1a171b; }
+  /* line 160, ../sass/screen.scss */
+  div#content div#nav_header {
+    margin-bottom: 2em; }
+  /* line 164, ../sass/screen.scss */
+  div#content div#categories ul#left_nav {
+    font-weight: bold; }
+    /* line 166, ../sass/screen.scss */
+    div#content div#categories ul#left_nav > li {
+      margin-bottom: 1em; }
+      /* line 168, ../sass/screen.scss */
+      div#content div#categories ul#left_nav > li ul {
+        font-weight: normal;
+        margin-left: 1em; }
+
+/* line 177, ../sass/screen.scss */
+div#products_container {
+  margin: 1em 0 1em 0; }
+  /* line 179, ../sass/screen.scss */
+  div#products_container div.products {
+    padding: 1em;
+    margin-top: 1em;
+    margin-bottom: 2.5em;
+    -webkit-box-shadow: lightgrey 0px 1px 2px;
+    -moz-box-shadow: lightgrey 0px 1px 2px;
+    box-shadow: lightgrey 0px 1px 2px; }
+    /* line 184, ../sass/screen.scss */
+    div#products_container div.products:hover {
+      -webkit-box-shadow: #999999 0px 1px 3px;
+      -moz-box-shadow: #999999 0px 1px 3px;
+      box-shadow: #999999 0px 1px 3px; }
+    /* line 187, ../sass/screen.scss */
+    div#products_container div.products .buy_button {
+      text-align: center;
+      top: 30px;
+      opacity: 0; }
+
+/* line 196, ../sass/screen.scss */
+div#footer {
+  min-height: 200px;
+  padding: 2em 1em 2em 1em;
+  color: #333333;
+  border-top: solid 1px #d3d3d3; }
+  /* line 201, ../sass/screen.scss */
+  div#footer ul.social-links li {
+    list-style: none; }
+    /* line 202, ../sass/screen.scss */
+    div#footer ul.social-links li a {
+      display: block;
+      margin-left: 0.4em;
+      float: right;
+      width: 56px;
+      height: 56px;
+      text-indent: -999px;
+      overflow: hidden;
+      -webkit-transition-property: background-position;
+      -moz-transition-property: background-position;
+      -o-transition-property: background-position;
+      transition-property: background-position;
+      -webkit-transition-duration: 0.3s;
+      -moz-transition-duration: 0.3s;
+      -o-transition-duration: 0.3s;
+      transition-duration: 0.3s;
+      -webkit-transition-timing-function: ease-in;
+      -moz-transition-timing-function: ease-in;
+      -o-transition-timing-function: ease-in;
+      transition-timing-function: ease-in; }
