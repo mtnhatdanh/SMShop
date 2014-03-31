@@ -8,8 +8,7 @@
 @import "social/*.png";
 .facebook {@include social-sprite(facebook)};
 .skype {@include social-sprite(skype)};
-.yahoo {@include social-sprite(ABC)};
-.youtube {@include social-sprite(youtube)};
+.yahoo {@include social-sprite(yahoo)};
 
 @import url(http://fonts.googleapis.com/css?family=Lato:300,400,700);
 // @include font-face("codropsicons", font-files("codropsicons.ttf", "codropsicons.eot", "codropsicons.woff"));
@@ -28,6 +27,7 @@ body {
 	font-family: 'Lato', Calibri, Arial, sans-serif;
 }
 
+.drop {display: none;}
 
 #bar {
 	position: fixed;
@@ -67,16 +67,22 @@ body {
 	}
 }
 
-div#header {
+header {
 	position: absolute;
-	height: 140px;
+	height: 100px;
+	background-color: #fff;
 	left: 0;
 	right: 0;
 	top: 0px;
 	z-index: 3;
 	// background: transparent url(http://localhost:8080/SMShop/public/assets/img/bg_header_top.png) repeat-x 0 -40px;
+	@include box-shadow(#d3d3d3 0px 5px 20px);
 	div#nav_header {
 		margin-top: 37px;
+		a#logotype > img {
+			height: 70px;
+			margin-top: -10px;
+		}
 	}
 	ul {
 		list-style: none;
@@ -148,6 +154,9 @@ div#main {
 
 div#content {
 	padding: 0.5em 2em 0.5em 2em;
+	li.active {
+		background: #e8e8e8;
+	}
 	a {
 		color:#1a171b;
 		// @include transition-property(all);
@@ -157,17 +166,22 @@ div#content {
 		// 	color: #e74c3c;
 		// }
 	}
-	div#nav_header {
+	nav#nav_header {
 		margin-bottom: 2em;
-	}
-	div#categories {
-		ul#left_nav {
+		li {
 			font-weight: bold;
+		}
+	}
+	nav#categories {
+		ul#left_nav {
+			// font-weight: normal;
 			>li {
 				margin-bottom: 1em;
 				ul {
 					font-weight: normal;
-					margin-left: 1em;
+					li {
+						padding-left: 1em;
+					}
 				}
 			}
 		}
@@ -184,16 +198,10 @@ div#products_container {
 		&:hover {
 			@include box-shadow(#999 0px 1px 3px);
 		}
-		.buy_button {
-			// position: relative;
-			text-align: center;
-			top:30px;
-			opacity: 0;
-		}
 	}
 }
 
-div#footer {
+footer {
 	min-height: 200px;
 	padding: 2em 1em 2em 1em;
 	color:#333333;
