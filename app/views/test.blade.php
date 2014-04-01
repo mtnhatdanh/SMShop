@@ -5,5 +5,5 @@ test
 @endsection
 
 @section("content")
-
+ABC
 @endsection

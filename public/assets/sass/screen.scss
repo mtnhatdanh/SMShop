@@ -33,6 +33,7 @@ body {
 	position: fixed;
 	left: 0px;
 	right: 0px;
+	top: 0px;
 	height: 34px;
 	background: url(../../assets/img/bg_header_top.png) repeat-x transparent;
 	z-index: 100;
@@ -144,16 +145,17 @@ div#main {
 	top: 126px;
 	z-index: 2;
 	div#content {
-		min-height: 1500px;
+		min-height: 500px;
 		margin-top: -1em;
 		margin-bottom: 2em;
 		background-color: #fff;
 		@include box-shadow(#999 0px 15px 40px);
+		padding: 2em 2em 2em 2em;
 	}
+	
 }
 
 div#content {
-	padding: 0.5em 2em 0.5em 2em;
 	li.active {
 		background: #e8e8e8;
 	}
@@ -202,8 +204,8 @@ div#products_container {
 }
 
 footer {
-	min-height: 200px;
-	padding: 2em 1em 2em 1em;
+	min-height: 100px;
+	padding: 1em 0em 1em 0em;
 	color:#333333;
 	border-top: solid 1px #d3d3d3;
 	ul.social-links li { list-style: none;
@@ -219,5 +221,13 @@ footer {
 			@include transition-duration(0.3s);
 			@include transition-timing-function(ease-in);
 		}
+	}
+}
+
+div#mainpage {
+	img {
+		@include box-shadow(#d3d3d3 0px 1px 3px);
+		width: 100%;
+		margin-bottom: 2em;
 	}
 }
