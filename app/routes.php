@@ -25,12 +25,35 @@ Route::get('category/{name}', function($name){
 	return View::make('category', array('category'=>$category));
 });
 
-Route::get('category/{name}/{view}', function($name, $view){
+Route::get('category/{name}/{itemType_id}', function($name, $itemType_id){
 	$category_id = Category::where('name', '=', $name)->first()->id;
-	$category    = Category::find($category_id);
-	if ($view == 'view-all') {
-		return View::make('View_Ajax.view-all', array('category'=>$category));
+	
+	$items = DB::table('categories')
+				->join('item_types', 'categories.id', '=', 'item_types.category_id')
+				->join('item_atts', 'item_types.id', '=', 'item_atts.itemType_id')
+				->join('items', 'item_atts.id', '=', 'items.itemAtt_id')
+				->where('categories.id', '=', $category_id);
+
+	if ($itemType_id == 'view-all') {
+		$items = $items	->paginate(16);
+	} else {
+		$items = $items->where('item_types.id', '=', $itemType_id)->paginate(16);
 	}
+	return View::make('View_Ajax.view-items', array('items'=>$items));
+});
+
+Route::get('category/{name}/{itemType_id}/att/{itemAtt_id}', function($name, $itemType_id, $itemAtt_id){
+	$category_id = Category::where('name', '=', $name)->first()->id;
+	
+	$items = DB::table('categories')
+				->join('item_types', 'categories.id', '=', 'item_types.category_id')
+				->join('item_atts', 'item_types.id', '=', 'item_atts.itemType_id')
+				->join('items', 'item_atts.id', '=', 'items.itemAtt_id')
+				->where('categories.id', '=', $category_id)
+				->where('item_types.id', '=', $itemType_id)
+				->where('item_atts.id', '=', $itemAtt_id)
+				->paginate(16);
+	return View::make('View_Ajax.view-items', array('items'=>$items));
 });
 
 Route::get('add-item', function(){

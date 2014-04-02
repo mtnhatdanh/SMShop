@@ -18,11 +18,11 @@ SM Shop - Mainpage
             <ul id="left_nav">
                 @foreach ($category->itemTypes()->where('enable', '=', 1)->get() as $itemType)
                 <li>
-                    <a href="#" class="category_a">{{ucfirst($itemType->name)}}</a>
+                    <a href="{{Asset('category/'.$category->name.'/'.$itemType->id)}}" class="category_a ajax-a">{{ucfirst($itemType->name)}}</a>
                     <ul>
-                        <li class="itemAtt_li"><a class="itemAtt_a" href="#" class="itemAtt_a">View all</a></li>
+                        <li class="itemAtt_li"><a class="itemAtt_a ajax-a" href="{{Asset('category/'.$category->name.'/'.$itemType->id)}}">View all</a></li>
                         @foreach ($itemType->itemAtts()->where('enable', '=', 1)->get() as $itemAtt)
-                        <li class="itemAtt_li"><a class="itemAtt_a" href="#">{{ucfirst($itemAtt->name)}}</a></li>
+                        <li class="itemAtt_li"><a class="itemAtt_a ajax-a" href="{{Asset('category/'.$category->name.'/'.$itemType->id.'/att/'.$itemAtt->id)}}">{{ucfirst($itemAtt->name)}}</a></li>
                         @endforeach
                     </ul>
                 </li>
@@ -34,13 +34,15 @@ SM Shop - Mainpage
     <div class="col-sm-10">
         <div class="row">
             <div class="col-sm-12" id="div-content">
+                <div id="loadingDiv">
+                    <img src="{{Asset('assets/img/ajax-loader.gif')}}" class="img-responsive" alt="Image">
+                </div>
                 <div style="margin-bottom:1em;padding-left:1em;">
                     <h3>KIDS</h3>
                     <span style="text-decoration: underline;">SM Shop</span> / <span style="color:gray">KIDS</span>
                 </div>
                 <div class="row" id="products_container">
                     <div class="col-sm-12">
-                    <div>
                         <a href="#"><img src="{{Asset('assets/img/2LF_Page_01.jpg')}}" class="img-responsive" alt="Image"></a>
                     </div>
                 </div>
@@ -100,14 +102,22 @@ SM Shop - Mainpage
             $(this).parent('li').addClass('active');
         });
 
+        $('#loadingDiv').hide().ajaxStart( function() {
+            $(this).show();  // show Loading Div
+        } ).ajaxStop ( function(){
+            $(this).hide(); // hide loading div
+        });
+
         // link a ajax
         $('.ajax-a').click(function(){
             url = $(this).attr('href');
             $.get(url, function(data){
-                $('#products_container').html(data);
+                $('#div-content').html(data);
             });
             return false;
         });
+
+        
         
     })
 </script>
