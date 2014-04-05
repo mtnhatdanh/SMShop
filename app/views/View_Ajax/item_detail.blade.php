@@ -1,46 +1,53 @@
-@extends("theme")
-
-@section('title')
-test
-@endsection
-
-@section("content")
-
 <?php
-$item = Item::find(50);
+$category_name = $item->itemAtt->itemType->category->name;
+$typeLink      = $item->itemAtt->itemType->name;
+$attLink       = $item->itemAtt->name;
 ?>
 
 <div class="row">
-	<div class="col-sm-12" style="margin-bottom:1em; margin-top:20em; margin-left:2em;">
-		<div id="loading"></div>
-		<div id="slideshow"></div>
-		<!-- <div id="caption"></div> -->
+	<div class="col-sm-12">
+		<section id="products_header" style="margin-bottom:1em;padding-left:1em;">
+		    <h3>{{strtoupper($category_name)}}</h3>
+		    <span style="text-decoration: underline;">SM Shop</span> / 
+		    <span style="color:gray">
+			    <a class="item-ajax-a" href="{{Asset('category/'.$category_name.'/view-all')}}">{{ucfirst($category_name)}}</a> 
+			    @if ($typeLink != 'view-all') / <a href="">{{ucfirst($typeLink)}}</a> @endif
+			    @if (isset($attLink)) / <a href="">{{ucfirst($attLink)}}</a> @endif
+		    </span>
+		</section>
 	</div>
 </div>
-<div class="row">
-	<div id="thumbs">
-	    <ul class="thumbs noscript list-unstyled">
-	
-	    	<li class="col-sm-6">
-	            <a class="thumb" name="optionalCustomIdentifier" href="{{Asset('assets/img/products/'.$item->urlPic1)}}" title="your image title">
-	                <img class="img-responsive" src="{{Asset('assets/img/products/'.$item->urlPic1)}}" alt="your image title again for graceful degradation" />
-	            </a>
-	        </li>
-	        <li class="col-sm-6">
-	            <a class="thumb" name="optionalCustomIdentifier" href="{{Asset('assets/img/products/'.$item->urlPic2)}}" title="your image title">
-	                <img class="img-responsive" src="{{Asset('assets/img/products/'.$item->urlPic2)}}" alt="your image title again for graceful degradation" />
-	            </a>
+<div class="row" id="item_detail" style="padding-left:1em">
+	<div class="col-sm-5">
+		<!-- <div id="controls"></div> -->
+		<div class="row">
+			<div class="col-sm-12" style="margin-bottom:1em;">
+				<div id="loading"></div>
+				<div id="slideshow"></div>
+				<!-- <div id="caption"></div> -->
+			</div>
+		</div>
+		<div class="row">
+			<div id="thumbs">
+			    <ul class="thumbs noscript list-unstyled">
+			
+			    	<li class="col-sm-6">
+			            <a class="thumb" name="optionalCustomIdentifier" href="{{Asset('assets/img/products/'.$item->urlPic1)}}" title="your image title">
+			                <img class="img-responsive" src="{{Asset('assets/img/products/'.$item->urlPic1)}}" alt="your image title again for graceful degradation" />
+			            </a>
+			        </li>
+			        <li class="col-sm-6">
+			            <a class="thumb" name="optionalCustomIdentifier" href="{{Asset('assets/img/products/'.$item->urlPic2)}}" title="your image title">
+			                <img class="img-responsive" src="{{Asset('assets/img/products/'.$item->urlPic2)}}" alt="your image title again for graceful degradation" />
+			            </a>
 
-	        </li>
-	
-	    </ul>
+			        </li>
+			
+			    </ul>
+			</div>
+		</div>
 	</div>
 </div>
-<ul>
-	<li>test</li>
-	<li>test</li>
-	<li>test</li>
-</ul>
 
 <script>
 	jQuery(document).ready(function($) {
@@ -79,6 +86,3 @@ $item = Item::find(50);
 	});
 </script>
 
-
-
-@endsection

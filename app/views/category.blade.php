@@ -1,7 +1,7 @@
 @extends("theme")
 
 @section('title')
-SM Shop - Mainpage
+Welcome to SM Shop
 @endsection
 
 @section("content")
@@ -34,9 +34,9 @@ SM Shop - Mainpage
     <div class="col-sm-10">
         <div class="row">
             <div class="col-sm-12" id="div-content">
-                <div id="loadingDiv">
+                <!-- <div id="loadingDiv">
                     <img src="{{Asset('assets/img/ajax-loader.gif')}}" class="img-responsive" alt="Image">
-                </div>
+                </div> -->
                 <div style="margin-bottom:1em;padding-left:1em;">
                     <h3>KIDS</h3>
                     <span style="text-decoration: underline;">SM Shop</span> / <span style="color:gray">KIDS</span>
@@ -68,6 +68,7 @@ SM Shop - Mainpage
         </div>
     </div>
 </div>
+<div id="loading_div"></div>
 
 <script>
     $(document).ready(function(){
@@ -115,6 +116,18 @@ SM Shop - Mainpage
                 $('#div-content').html(data);
             });
             return false;
+        });
+
+        // jquery for loading gif
+        $abcdef = $('body');
+
+        $(document).on({
+            ajaxStart: function() { 
+                $abcdef.addClass("loading");
+            },
+            ajaxStop: function() { 
+                $abcdef.removeClass("loading");
+            }    
         });
 
         

@@ -9,10 +9,10 @@
     <title>@yield('title')</title>
 
     <!-- Bootstrap core CSS -->
-    <link href="{{Asset('assets/css/bootstrap.css')}}" rel="stylesheet">
+    {{HTML::style('assets/css/bootstrap.css')}}
 
     <!-- Custom styles for this template -->
-    <link href="{{Asset('assets/css/screen.css')}}" rel="stylesheet" >
+    {{HTML::style('assets/css/screen.css')}}
 
     <!-- Just for debugging purposes. Don't actually copy this line! -->
     <!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
@@ -25,14 +25,16 @@
 
     <!-- Bootstrap core JavaScript
     ================================================== -->
-    <script src="{{Asset('assets/js/jquery-1.11.0.min.js')}}"></script>
-    <script src="{{Asset('assets/js/bootstrap.min.js')}}"></script>
-	<script type="text/javascript" src="{{Asset('assets/js/jquery-validate/jquery.validate.js')}}"></script>
+    {{HTML::script('assets/js/jquery-1.11.0.min.js')}}
+    {{HTML::script('assets/js/bootstrap.min.js')}}
 
-  <!-- Creative Button js and css -->
-  <!-- <link rel="stylesheet" type="text/css" href="{{Asset('assets/CreativeButtons/css/default.css')}}" /> -->
-  <!-- <link rel="stylesheet" type="text/css" href="{{Asset('assets/CreativeButtons/css/component.css')}}" /> -->
-  
+    <!-- Validation Jquery -->
+    {{HTML::script('assets/js/jquery-validate/jquery.validate.js')}}
+
+    <!-- Galleriffic thumbnail picture jquery-->
+    <!-- {{HTML::style('assets/js/galleriffic-2.0/css/basic.css')}} -->
+    <!-- {{HTML::style('assets/js/galleriffic-2.0/css/galleriffic-1.css')}} -->
+    {{HTML::script('assets/js/galleriffic-2.0/js/jquery.galleriffic.js')}}
     
   </head>
 
