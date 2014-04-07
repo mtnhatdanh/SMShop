@@ -26,6 +26,7 @@
     <!-- Bootstrap core JavaScript
     ================================================== -->
     {{HTML::script('assets/js/jquery-1.11.0.min.js')}}
+    {{HTML::script('assets/js/jquery-ui-1.10.4.custom.min.js')}}
     {{HTML::script('assets/js/bootstrap.min.js')}}
 
     <!-- Validation Jquery -->
@@ -43,9 +44,25 @@
       <div class="container">
         <div class="row">
           <ul>
-            <li><a href="#">Contact</a></li>
-            <li><a href="#"><span class="glyphicon glyphicon-shopping-cart"></span>Cart</a></li>
-            <li><a href="#">Log In</a></li>
+            <li><a href="#">Check out</a></li>
+            <li  id="cart">
+              <a href="javascript:{}" onclick="showCart()">
+                <span class="glyphicon glyphicon-shopping-cart"></span>Cart<span id="cartSum"><?php
+                   if (!Cache::has('cart')) {
+                     echo ('(0)');
+                   } else {
+                    $cart = (Cache::get('cart'));
+                    $sumQuantity = 0;
+                    foreach ($cart as $itemCart) {
+                      $sumQuantity += $itemCart->quantity;
+                    }
+                    echo ('('.$sumQuantity.')');
+                   }
+                  ?>
+                </span>
+              </a>
+            </li>
+            <li><a href="{{Asset('log-in')}}">Log In</a></li>
           </ul>
         </div>
       </div>
@@ -84,6 +101,45 @@
     <div id="main" class="container">
       @yield('content')
     </div>
+
+    <!-- Modal -->
+    <div class="modal fade" id="myCart" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+            <h4 class="modal-title" id="myModalLabel">Giỏ hàng</h4>
+          </div>
+          <div class="modal-body">
+            <div id="div-cart"></div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            <button type="button" class="btn btn-primary">CHECK OUT</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script>
+
+      function showCart(){
+        $('#myCart').modal('show');
+        // $.get('showcart', function(data){
+        //   $('#div-cart').html(data);
+        // });
+        $.ajax({
+            url: '{{Asset('show-cart')}}',
+            type: 'get',
+            data: {},
+            success: function (data) {
+              $('#div-cart').html(data);
+            },
+            global: false
+          });
+      }
+
+    </script>
     
   </body>
 </html>

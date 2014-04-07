@@ -18,27 +18,24 @@ $attLink       = $item->itemAtt->name;
 	</div>
 </div>
 <div class="row" id="item_detail" style="padding-left:1em">
-	<div class="col-sm-5">
-		<!-- <div id="controls"></div> -->
+	<div class="col-sm-7">
 		<div class="row">
-			<div class="col-sm-12" style="margin-bottom:1em;">
+			<div class="col-sm-9" style="margin-bottom:1em;">
 				<div id="loading"></div>
 				<div id="slideshow"></div>
 				<!-- <div id="caption"></div> -->
 			</div>
-		</div>
-		<div class="row">
 			<div id="thumbs">
 			    <ul class="thumbs noscript list-unstyled">
 			
-			    	<li class="col-sm-6">
+			    	<li class="col-sm-3">
 			            <a class="thumb" name="optionalCustomIdentifier" href="{{Asset('assets/img/products/'.$item->urlPic1)}}" title="your image title">
-			                <img class="img-responsive" src="{{Asset('assets/img/products/'.$item->urlPic1)}}" alt="your image title again for graceful degradation" />
+			                <img class="img-responsive" src="{{Asset('assets/img/products/'.$item->urlPic1)}}" alt="product pircture" />
 			            </a>
 			        </li>
-			        <li class="col-sm-6">
+			        <li class="col-sm-3">
 			            <a class="thumb" name="optionalCustomIdentifier" href="{{Asset('assets/img/products/'.$item->urlPic2)}}" title="your image title">
-			                <img class="img-responsive" src="{{Asset('assets/img/products/'.$item->urlPic2)}}" alt="your image title again for graceful degradation" />
+			                <img class="img-responsive" src="{{Asset('assets/img/products/'.$item->urlPic2)}}" alt="product pircture" />
 			            </a>
 
 			        </li>
@@ -47,9 +44,96 @@ $attLink       = $item->itemAtt->name;
 			</div>
 		</div>
 	</div>
+	<div class="col-sm-5">
+		<p>
+			<h3>{{ucfirst($item->name)}}</h3>
+			<span>Giá: {{number_format($item->price, 0, '.', ',')}} VND</span>
+			<br/>
+		</p>
+		<p>
+			<strong>Description</strong><br/>
+			{{$item->description}}
+		</p>
+		<p>
+			<strong>Details</strong><br/>
+			{{$item->detail}}
+		</p>
+		<p>
+			<strong>Size: </strong><span id="size-span">{{$item->itemAtt->itemType->itemSizes->first()->value}}</span><br/>
+			<ul class="list-unstyled" id="size-ul">
+				<?php $first = 0; ?>
+				@foreach ($item->itemAtt->itemType->itemSizes as $itemSize)
+				<li><span class="badge @if ($first == 0) active @endif">{{$itemSize->value}}</span></li>
+				<?php $first = 1?>
+				@endforeach
+			</ul>
+		</p>
+		<p style="margin-top:1em">
+			<button type="button" class="btn btn-default add-to-cart">Add to cart</button>
+		</p>
+	</div>
 </div>
 
+
+
 <script>
+	// Add to cart jQuery
+	$('.add-to-cart').on('click', function () {
+        var cart = $('#cart');
+        var imgtodrag = $("a.advance-link img").eq(0);
+        if (imgtodrag) {
+            var imgclone = imgtodrag.clone()
+                .offset({
+                top: imgtodrag.offset().top,
+                left: imgtodrag.offset().left
+            })
+                .css({
+                'opacity': '0.5',
+                    'position': 'absolute',
+                    'height': '300px',
+                    'width': '300px',
+                    'z-index': '100'
+            })
+                .appendTo($('body'))
+                .animate({
+                'top': cart.offset().top + 10,
+                    'left': cart.offset().left + 10,
+                    'width': 75,
+                    'height': 75
+            }, 1000, 'easeInOutExpo');
+            
+            setTimeout(function () {
+				item_id = {{$item->id}};
+				size    = $('#size-span').text();
+                $.ajax({
+                		url: '{{Asset('cart-handle')}}',
+                		type: 'post',
+                		data: {item_id: item_id, size: size, type: 1},
+                		success: function (data) {
+                			$('#cartSum').html(data);
+                		},
+                		global: false
+                	});
+            }, 1500);
+
+            imgclone.animate({
+                'width': 0,
+                    'height': 0
+            }, function () {
+                $(this).detach()
+            });
+        }
+    });
+	
+
+	// Pick Size
+	$('span.badge').click(function(){
+		$('.badge').removeClass('active');
+		$(this).addClass('active');
+		$('#size-span').text($(this).text());
+	});
+
+	// Slide show picture
 	jQuery(document).ready(function($) {
 	    var gallery = $('#thumbs').galleriffic({
 	        delay:                     3000, // in milliseconds
@@ -74,7 +158,7 @@ $attLink       = $item->itemAtt->name;
 	        enableKeyboardNavigation:  true, // Specifies whether keyboard navigation is enabled
 	        autoStart:                 false, // Specifies whether the slideshow should be playing or paused when the page first loads
 	        syncTransitions:           false, // Specifies whether the out and in transitions occur simultaneously or distinctly
-	        defaultTransitionDuration: 1000, // If using the default transitions, specifies the duration of the transitions
+	        defaultTransitionDuration: 500, // If using the default transitions, specifies the duration of the transitions
 	        onSlideChange:             undefined, // accepts a delegate like such: function(prevIndex, nextIndex) { ... }
 	        onTransitionOut:           undefined, // accepts a delegate like such: function(slide, caption, isSync, callback) { ... }
 	        onTransitionIn:            undefined, // accepts a delegate like such: function(slide, caption, isSync) { ... }

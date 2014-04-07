@@ -1,10 +1,15 @@
+<?php
+if ($typeLink != 'view-all') {
+	$typeLink_id = ItemType::where('name', '=', $typeLink)->first()->id;
+}
+?>
 <section id="products_header" style="margin-bottom:1em;padding-left:1em;">
     <h3>{{strtoupper($category->name)}}</h3>
     <span style="text-decoration: underline;">SM Shop</span> / 
-    <span style="color:gray">
-	    <a class="item-ajax-a" href="{{Asset('category/'.$category->name.'/view-all')}}">{{strtoupper($category->name)}}</a> 
-	    @if ($typeLink != 'view-all') / <a href="">{{ucfirst($typeLink)}}</a> @endif
-	    @if (isset($attLink)) / <a href="">{{ucfirst($attLink)}}</a> @endif
+    <span>
+	    {{strtoupper($category->name)}} 
+	    @if ($typeLink != 'view-all') / {{ucfirst($typeLink)}} @endif
+	    @if (isset($attLink)) / {{ucfirst($attLink)}} @endif
     </span>
 </section>
 <div class="row" id="products_container">

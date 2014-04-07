@@ -11,4 +11,8 @@ class ItemType extends Eloquent
     	return $this->hasMany("ItemAtt","itemType_id");
     }
 
+    public function itemSizes(){
+    	return $this->hasMany('ItemSize', 'itemType_id');
+    }
+
 }

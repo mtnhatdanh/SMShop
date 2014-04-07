@@ -11,7 +11,7 @@ Welcome to SM Shop
             <h3>{{strtoupper($category->name)}}</h3>
             <ul class="list-unstyled">
                 <li class="itemAtt_li"><a class="ajax-a" href="{{Asset('category/'.$category->name.'/view-all')}}">View All</a></span></li>
-                <li class="itemAtt_li"><a href="#">New Arrivals</a></li>
+                <li class="itemAtt_li"><a class="ajax-a" href="#">New Arrivals</a></li>
             </ul>
         </nav>
         <nav id="categories">
@@ -48,22 +48,22 @@ Welcome to SM Shop
                 </div>
             </div > 
         </div>
-        <div class="row">
-            <div class="col-sm-12"  style="padding: 1em">
-                <footer> 
-                    <div class="row">
-                        <div class="col-sm-6">
+        <div class="row" style="margin-top:2em;">
+            <div class="col-sm-12">
+                <div class="row">               
+                    <footer style="margin:0em 2em 0em 2em">
+                        <div style="width:50%; float:left">
                             <span>Copyright © 2014, design by: Minh Giang</span>
                         </div>
-                        <div class="col-sm-6 text-right">
+                        <div style="width:50%; float:right">
                             <ul class="social-links clearfix list-unstyled">
                                 <li><a href="#" class="facebook"></a></li>
                                 <li><a href="#" class="skype"></a></li>
                                 <li><a href="#" class="yahoo"></a></li>
                             </ul>
                         </div>
-                    </div>
-                </footer>
+                    </footer>
+                </div>
             </div>
         </div>
     </div>
