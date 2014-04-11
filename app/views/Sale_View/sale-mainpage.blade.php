@@ -1,28 +1,26 @@
 @extends("theme")
 
 @section('title')
-Welcome to SM Shop
+Welcome to SM Shop - Sale
 @endsection
 
 @section("content")
 <div id="content" class="row">
     <div class="col-sm-2">
         <nav id="nav_header">
-            <h3>{{strtoupper($category->name)}}</h3>
-            <ul class="list-unstyled">
-                <li class="itemAtt_li"><a class="ajax-a" href="{{Asset('category/'.$category->name.'/view-all')}}">View All</a></span></li>
-                <li class="itemAtt_li"><a class="ajax-a" href="{{Asset('category/'.$category->name.'/new-arrivals')}}">New Arrivals</a></li>
-            </ul>
+            <h3>SALE</h3>
         </nav>
         <nav id="categories">
             <ul id="left_nav">
-                @foreach ($category->itemTypes()->where('enable', '=', 1)->get() as $itemType)
-                <li>
-                    <a href="{{Asset('category/'.$category->name.'/'.$itemType->id)}}" class="category_a ajax-a">{{ucfirst($itemType->name)}}</a>
+                @foreach (Category::get() as $category)
+                <li class="category_li">
+                    <a class="category_a ajax-a" href="{{Asset('sale/'.$category->name)}}"><strong>{{ucfirst($category->name)}}</strong></a></span>
                     <ul>
-                        <li class="itemAtt_li"><a class="itemAtt_a ajax-a" href="{{Asset('category/'.$category->name.'/'.$itemType->id)}}">View all</a></li>
-                        @foreach ($itemType->itemAtts()->where('enable', '=', 1)->get() as $itemAtt)
-                        <li class="itemAtt_li"><a class="itemAtt_a ajax-a" href="{{Asset('category/'.$category->name.'/'.$itemType->id.'/att/'.$itemAtt->id)}}">{{ucfirst($itemAtt->name)}}</a></li>
+                        <li class="itemType_li"><a class="itemType_a ajax-a" href="{{Asset('sale/'.$category->name)}}">View all</a></li>
+                        @foreach ($category->itemTypes()->where('enable', '=', 1)->get() as $itemType)
+                        <li class="itemType_li">
+                            <a href="{{Asset('sale/'.$category->name.'/'.$itemType->id)}}" class="ajax-a itemType_a">{{ucfirst($itemType->name)}}</a>
+                        </li>
                         @endforeach
                     </ul>
                 </li>
@@ -35,20 +33,12 @@ Welcome to SM Shop
         <div class="row">
             <div class="col-sm-12" id="div-content">
                 <div style="margin-bottom:1em;padding-left:1em;">
-                    <h3>{{strtoupper($category->name)}}</h3>
-                    <span style="text-decoration: underline;">SM Shop</span> / <span style="color:gray">{{strtoupper($category->name)}}</span>
+                    <h3>SALE</h3>
+                    <span style="text-decoration: underline;">SM Shop</span> / <span style="color:gray">Sale</span>
                 </div>
                 <div class="row" id="products_container">
                     <div class="col-sm-12">
-                        @if ($category->id == 1)
-                        <img src="{{Asset('assets/img/2LF_Page_01.jpg')}}" class="img-responsive" alt="Image" style="width:100%">
-                        @elseif ($category->id == 2)
-                        <img src="{{Asset('assets/img/2LF_Page_02.jpg')}}" class="img-responsive" alt="Image" style="width:100%">
-                        @elseif ($category->id == 3)
-                        <img src="{{Asset('assets/img/2LF_Page_03.jpg')}}" class="img-responsive" alt="Image" style="width:100%">
-                        @elseif ($category->id == 4)
-                        <img src="{{Asset('assets/img/2LF_Page_04.jpg')}}" class="img-responsive" alt="Image" style="width:100%">
-                        @endif
+                        <img src="{{Asset('assets/img/sale.jpeg')}}" class="img-responsive" alt="Image" style="width:100%">
                     </div>
                 </div>
             </div > 
@@ -90,24 +80,16 @@ Welcome to SM Shop
             $dropDown.hide();
             $current_ul = $(this).next('ul');
             $current_ul.show();
-            $('.itemAtt_li').removeClass('active');
+            $('.itemType_li').removeClass('active');
             $first_li = $current_ul.children('li:first');
             $first_li.addClass('active');
         });
 
-        $triggerA = $trig.find('a.itemAtt_a');
+        $triggerA = $trig.find('a.itemType_a');
         $triggerA.click(function(){
-            $('.itemAtt_li').removeClass('active');
+            $('.itemType_li').removeClass('active');
             $(this).parent('li').addClass('active');
         });
-
-        $triggerB = $('nav#nav_header').find('a');
-        $triggerB.click(function(){
-            $('.itemAtt_li').removeClass('active');
-            $dropDown.hide();
-            $(this).parent('li').addClass('active');
-        });
-
 
         // link a ajax
         $('.ajax-a').click(function(){

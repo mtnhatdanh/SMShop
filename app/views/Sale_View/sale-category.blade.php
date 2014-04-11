@@ -1,14 +1,14 @@
 @extends("theme")
 
 @section('title')
-Welcome to SM Shop
+Welcome to SM Shop - Sale
 @endsection
 
 @section("content")
 <div id="content" class="row">
     <div class="col-sm-2">
         <nav id="nav_header">
-            <h3>{{strtoupper($category->name)}}</h3>
+            <h3>SALE</h3>
             <ul class="list-unstyled">
                 <li class="itemAtt_li"><a class="ajax-a" href="{{Asset('category/'.$category->name.'/view-all')}}">View All</a></span></li>
                 <li class="itemAtt_li"><a class="ajax-a" href="{{Asset('category/'.$category->name.'/new-arrivals')}}">New Arrivals</a></li>
@@ -41,13 +41,13 @@ Welcome to SM Shop
                 <div class="row" id="products_container">
                     <div class="col-sm-12">
                         @if ($category->id == 1)
-                        <img src="{{Asset('assets/img/2LF_Page_01.jpg')}}" class="img-responsive" alt="Image" style="width:100%">
+                        <img src="{{Asset('assets/img/2LF_Page_01.jpg')}}" class="img-responsive" alt="Image">
                         @elseif ($category->id == 2)
-                        <img src="{{Asset('assets/img/2LF_Page_02.jpg')}}" class="img-responsive" alt="Image" style="width:100%">
+                        <img src="{{Asset('assets/img/2LF_Page_02.jpg')}}" class="img-responsive" alt="Image">
                         @elseif ($category->id == 3)
-                        <img src="{{Asset('assets/img/2LF_Page_03.jpg')}}" class="img-responsive" alt="Image" style="width:100%">
+                        <img src="{{Asset('assets/img/2LF_Page_03.jpg')}}" class="img-responsive" alt="Image">
                         @elseif ($category->id == 4)
-                        <img src="{{Asset('assets/img/2LF_Page_04.jpg')}}" class="img-responsive" alt="Image" style="width:100%">
+                        <img src="{{Asset('assets/img/2LF_Page_04.jpg')}}" class="img-responsive" alt="Image">
                         @endif
                     </div>
                 </div>
@@ -108,6 +108,11 @@ Welcome to SM Shop
             $(this).parent('li').addClass('active');
         });
 
+        $('#loadingDiv').hide().ajaxStart( function() {
+            $(this).show();  // show Loading Div
+        } ).ajaxStop ( function(){
+            $(this).hide(); // hide loading div
+        });
 
         // link a ajax
         $('.ajax-a').click(function(){

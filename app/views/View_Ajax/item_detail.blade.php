@@ -47,7 +47,14 @@ $attLink       = $item->itemAtt->name;
 	<div class="col-sm-5">
 		<p>
 			<h3>{{ucfirst($item->name)}}</h3>
+			@if ($item->onsale)
+			<small style="color:gray; text-decoration: line-through">Giá: {{number_format($item->price, 0, '.', ',')}} VND</small><br/>
+			@else
 			<span>Giá: {{number_format($item->price, 0, '.', ',')}} VND</span>
+			@endif
+			@if ($item->onsale)
+			<span>Giá: {{number_format($item->sale_price, 0, '.', ',')}} VND</span>
+			@endif
 			<br/>
 		</p>
 		<p>
@@ -55,17 +62,18 @@ $attLink       = $item->itemAtt->name;
 			{{$item->description}}
 		</p>
 		<p>
-			<strong>Details</strong><br/>
-			{{$item->detail}}
-		</p>
-		<p>
-			<strong>Size: </strong><span id="size-span">{{$item->itemAtt->itemType->itemSizes->first()->value}}</span><br/>
+			<?php 
+				$first = 0;
+				$sizeAvail = $item->size_available;
+				$sizeAvail = (explode(' ', $sizeAvail));
+				?>
+			<strong>Size: </strong><span id="size-span">{{$sizeAvail[0]}}</span><br/>
 			<ul class="list-unstyled" id="size-ul">
-				<?php $first = 0; ?>
-				@foreach ($item->itemAtt->itemType->itemSizes as $itemSize)
-				<li><span class="badge @if ($first == 0) active @endif">{{$itemSize->value}}</span></li>
+				@foreach ($sizeAvail as $size)
+				<li><span class="badge @if ($first == 0) active @endif">{{$size}}</span></li>
 				<?php $first = 1?>
 				@endforeach
+				
 			</ul>
 		</p>
 		<p style="margin-top:1em">

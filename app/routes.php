@@ -19,6 +19,9 @@ Route::get('main', function(){
 	return View::make('mainpage');
 });
 
+/**
+ * Route for nomal items
+ */
 Route::get('category/{name}', function($name){
 	$category_id = Category::where('name', '=', $name)->first()->id;
 	$category    = Category::find($category_id);
@@ -32,12 +35,19 @@ Route::get('category/{name}/{itemType_id}', function($name, $itemType_id){
 				->join('item_types', 'categories.id', '=', 'item_types.category_id')
 				->join('item_atts', 'item_types.id', '=', 'item_atts.itemType_id')
 				->join('items', 'item_atts.id', '=', 'items.itemAtt_id')
-				->where('categories.id', '=', $category_id);
+				->where('categories.id', '=', $category_id)
+				->where('items.onsale', '!=', 1);
 
 	if ($itemType_id == 'view-all') {
 		$items    = $items	->paginate(16);
 		$typeLink = 'view-all';
-	} else {
+	} elseif ($itemType_id == 'new-arrivals') {
+		$dateTwoWeekAgo = strtotime('-2 weeks');
+		$dateTwoWeekAgo = date('Y-m-d', $dateTwoWeekAgo);
+		
+		$items          = $items -> where('items.created_at', '>', $dateTwoWeekAgo)->paginate(16);
+		$typeLink       = 'new-arrivals';
+	}	else {
 		$items    = $items->where('item_types.id', '=', $itemType_id)->paginate(16);
 		$typeLink = ItemType::find($itemType_id)->name;
 	}
@@ -56,6 +66,7 @@ Route::get('category/{name}/{itemType_id}/att/{itemAtt_id}', function($name, $it
 				->where('categories.id', '=', $category_id)
 				->where('item_types.id', '=', $itemType_id)
 				->where('item_atts.id', '=', $itemAtt_id)
+				->where('items.onsale', '!=', 1)
 				->paginate(16);
 	return View::make('View_Ajax.view-items', array('items'=>$items, 'category'=>$category, 'typeLink'=>$typeLink, 'attLink'=>$attLink));
 });
@@ -65,12 +76,48 @@ Route::get('item/{item_id}',function($item_id){
 	return View::make('View_Ajax.item_detail', array('item'=>$item));
 });
 
+
+/**
+ * Route for sale items
+ */
+Route::get('sale/{category_name}', function($category_name){
+	$category_id = Category::where('name', '=', $category_name)->first()->id;
+	$category    = Category::find($category_id);
+	$items       = DB::table('categories')
+				->join('item_types', 'categories.id', '=', 'item_types.category_id')
+				->join('item_atts', 'item_types.id', '=', 'item_atts.itemType_id')
+				->join('items', 'item_atts.id', '=', 'items.itemAtt_id')
+				->where('categories.id', '=', $category_id)
+				->where('items.onsale', '=', 1)
+				->paginate(16);
+
+	$typeLink = 'view-all';
+
+	return View::make('Sale_View.sale-view-items', array('items'=>$items, 'category'=>$category, 'typeLink'=>$typeLink));
+});
+
+Route::get('sale/{category_name}/{itemType_id}', function($category_name, $itemType_id){
+	$category_id = Category::where('name', '=', $category_name)->first()->id;
+	$category    = Category::find($category_id);
+	$items = DB::table('categories')
+				->join('item_types', 'categories.id', '=', 'item_types.category_id')
+				->join('item_atts', 'item_types.id', '=', 'item_atts.itemType_id')
+				->join('items', 'item_atts.id', '=', 'items.itemAtt_id')
+				->where('categories.id', '=', $category_id)
+				->where('item_types.id', '=', $itemType_id)
+				->where('items.onsale', '=', 1)
+				->paginate(16);
+
+	$typeLink = ItemType::find($itemType_id)->name;
+	return View::make('Sale_View.sale-view-items', array('items'=>$items, 'category'=>$category, 'typeLink'=>$typeLink));
+});
+
 /**
  * Cart handle
  */
 Route::post('cart-handle', function(){
 	$type    = Input::get('type');
-	
+
 	if (Cache::has('cart')) {
 		$cart = Cache::get('cart');
 	} else $cart = array();
@@ -122,33 +169,108 @@ Route::get('show-cart', function(){
 	return View::make('View_Ajax.show_cart', array('cart'=>$cart));
 });
 
-Route::get('test', function(){
-	Cache::forget('cart');
-	print_r(Cache::get('cart'));
+Route::get('log-in', function(){
+	return View::make('View_Ajax.login');
 });
 
-Route::get('add-item-size', function(){
-	DB::table('item_sizes')->insert(array(
-		array('itemType_id'=>5, 'value'=>'X'),
-		array('itemType_id'=>5, 'value'=>'Y'),
-		array('itemType_id'=>5, 'value'=>'Z'),
-		array('itemType_id'=>6, 'value'=>'X'),
-		array('itemType_id'=>6, 'value'=>'Y'),
-		array('itemType_id'=>6, 'value'=>'Z'),
-		array('itemType_id'=>7, 'value'=>'X'),
-		array('itemType_id'=>7, 'value'=>'Y'),
-		array('itemType_id'=>7, 'value'=>'Z'),
-		array('itemType_id'=>8, 'value'=>'X'),
-		array('itemType_id'=>8, 'value'=>'Y'),
-		array('itemType_id'=>8, 'value'=>'Z'),
-		array('itemType_id'=>9, 'value'=>'X'),
-		array('itemType_id'=>9, 'value'=>'Y'),
-		array('itemType_id'=>9, 'value'=>'Z'),
-		array('itemType_id'=>10, 'value'=>'X'),
-		array('itemType_id'=>10, 'value'=>'Y'),
-		array('itemType_id'=>10, 'value'=>'Z'),
-		array('itemType_id'=>11, 'value'=>'X'),
-		array('itemType_id'=>11, 'value'=>'Y'),
-		array('itemType_id'=>11, 'value'=>'Z')
-	));
+Route::filter('check_signin', function(){
+	if(!Session::has('user_admin')) {
+		return Redirect::to('signin-admin');
+	}
 });
+
+/**
+ * Admin control
+ */
+Route::get('signin-admin', function(){
+	if (Session::has('user_admin')) {
+		return Redirect::to('/admin/create-item');
+	}
+	if (Session::has('error_signin')) {
+		$error = Session::get('error_signin');
+		return View::make('Admin_View.signin',array('error'=>$error));
+	} else return View::make('Admin_View.signin');
+});
+
+Route::post('signin-admin', function() {
+	if (Input::get('username') == 'nutran' && Input::get('password') == 'abcdef') {
+		Session::put('user_admin', 'nutran');
+		Session::forget('error_signin');
+		return Redirect::to('admin/manage-items');
+	} else {
+		$error = "** Wrong username or password **";
+		Session::put('error_signin', $error);
+		return Redirect::to('signin-admin');
+	}
+});
+
+Route::filter('check_admin_signin', function(){
+	if(!Session::has('user_admin')) {
+		return Redirect::to('signin-admin');
+	}
+});
+
+Route::group(array('before'=>'check_admin_signin'), function(){
+	Route::controller('admin', 'AdminController');
+});
+
+/**
+ * Sale controller
+ */
+Route::controller('sale', 'SaleController');
+
+
+/**
+ * Route for Ajax
+ */
+Route::group(array('prefix'=>'ajax'), function(){
+
+	Route::post('pick-category', function(){
+		$category_id = Input::get('category_id');
+		$category    = Category::find($category_id);
+		echo "<option value='-1'>-- Select Item Type --</option>";
+		foreach ($category->itemTypes as $itemType) {
+			echo "<option value='$itemType->id'>$itemType->name</option>";
+		}
+	});
+
+	Route::post('pick-itemType', function(){
+		$itemType_id = Input::get("itemType_id");
+		$itemType    = ItemType::find($itemType_id);
+		echo "<option value='-1'>-- Select Item Attribute --</option>";
+		foreach ($itemType->itemAtts as $itemAtt) {
+			echo "<option value='$itemAtt->id'>$itemAtt->name</option>";
+		}
+	});
+
+	Route::post('pick-itemAtt', function(){
+		$itemAtt_id = Input::get('itemAtt_id');
+		$itemAtt = ItemAtt::find($itemAtt_id);
+		foreach ($itemAtt->itemType->itemSizes as $itemSize) {
+			echo "<div class='checkbox'>
+						<label>
+							<input name='size_available[]' value='$itemSize->value' type='checkbox' checked> $itemSize->value
+						</label>
+					</div>";
+		}
+	});
+});
+
+
+Route::get('test', function(){
+
+	// $items = DB::table('items')->where(DB::raw('items.created_at BETWEEN (NOW() - INTERVAL 14 DAY) AND NOW()'))->get();
+
+	$dateTwoWeekAgo = strtotime('-2 weeks');
+	$dateTwoWeekAgo = date('Y-m-d', $dateTwoWeekAgo);
+	$items = Item::where('created_at', '>', $dateTwoWeekAgo)->get();
+
+
+
+	// dd(DB::getQueryLog());
+	echo "<br/>";
+	print_r($items);
+	
+	
+});
+

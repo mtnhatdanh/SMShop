@@ -4,7 +4,7 @@ if ($typeLink != 'view-all' && $typeLink != 'new-arrivals') {
 }
 ?>
 <section id="products_header" style="margin-bottom:1em;padding-left:1em;">
-    <h3>{{strtoupper($category->name)}}</h3>
+    <h3>SALE</h3>
     <span style="text-decoration: underline;">SM Shop</span> / 
     <span>
 	    {{strtoupper($category->name)}} 
@@ -20,7 +20,8 @@ if ($typeLink != 'view-all' && $typeLink != 'new-arrivals') {
 	        <br/>
 	        <div style="margin-bottom:0.5em">
 	            {{ucfirst($item->name)}}<br/>
-	            VND {{number_format($item->price, 0, '.', ',')}}<br/>
+	            <small style="color:gray; text-decoration:line-through">VND {{number_format($item->price, 0, '.', ',')}}</small><br/>
+	            <span>VND {{number_format($item->sale_price, 0, '.', ',')}}</span>
 	        </div>
 	    </div>
 	</div>

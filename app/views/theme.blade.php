@@ -62,7 +62,11 @@
                 </span>
               </a>
             </li>
-            <li><a href="{{Asset('log-in')}}">Log In</a></li>
+            <li>
+              @if (!Session::has('user'))
+              <a href="javascript:{}" onclick="showLogin()">Log In</a>
+              @endif
+            </li>
           </ul>
         </div>
       </div>
@@ -102,7 +106,7 @@
       @yield('content')
     </div>
 
-    <!-- Modal -->
+    <!-- Modal Cart -->
     <div class="modal fade" id="myCart" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
       <div class="modal-dialog">
         <div class="modal-content">
@@ -121,19 +125,67 @@
       </div>
     </div>
 
+    <!-- Modal Login -->
+    <div class="modal fade" id="myLogin" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+            <h4 class="modal-title" id="myModalLabel">Đăng nhập</h4>
+          </div>
+          <div class="modal-body">
+            <section id="login-section">
+              <form action="" method="post" id="form-login">
+                <div class="row">
+                  <div class="col-sm-8 col-sm-offset-2 form-group">
+                    <label for="inputEmail">Email</label>
+                    <input type="text" name="email" id="inputEmail" class="form-control" required="required" placeholder="Your email..">
+                  </div>
+                  <div class="col-sm-8 col-sm-offset-2 form-group">
+                    <label for="inputPassword" class="control-label">Password</label>
+                    <input type="text" name="password" id="inputPassword" class="form-control" required="required" placeholder="Your password..">
+                  </div>
+                </div>
+              </form>
+            </section>
+          </div>
+          <div class="modal-footer">
+            <div class="row">
+              <div class="col-sm-4 col-sm-offset-2">
+                <button type="button" class="btn btn-primary btn-block">Log in</button>
+              </div>
+              <div class="col-sm-3">
+                <button type="button" class="btn btn-default btn-block" data-dismiss="modal">Close</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
     <script>
 
       function showCart(){
         $('#myCart').modal('show');
-        // $.get('showcart', function(data){
-        //   $('#div-cart').html(data);
-        // });
         $.ajax({
             url: '{{Asset('show-cart')}}',
             type: 'get',
             data: {},
             success: function (data) {
               $('#div-cart').html(data);
+            },
+            global: false
+          });
+      }
+
+      function showLogin(){
+        $('#myLogin').modal('show');
+        $.ajax({
+            url: '{{Asset('log-in')}}',
+            type: 'get',
+            data: {},
+            success: function (data) {
+              $('#div-login').html(data);
             },
             global: false
           });

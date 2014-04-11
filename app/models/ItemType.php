@@ -2,7 +2,7 @@
 class ItemType extends Eloquent
 {
     public $table="item_types";
-    
+
     public function category(){
     	return $this->belongsTo("Category","category_id");
     }

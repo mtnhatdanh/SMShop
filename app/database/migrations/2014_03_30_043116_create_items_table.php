@@ -19,9 +19,9 @@ class CreateItemsTable extends Migration {
 			$table->string('name');
 			$table->integer('price');
 			$table->text('description');
-			$table->string('detail');
 			$table->string('urlPic1');
 			$table->string('urlPic2');
+			$table->string('size_available');
 			$table->boolean('onsale');
 			$table->integer('sale_price');
 			$table->boolean('enable')->default(1);

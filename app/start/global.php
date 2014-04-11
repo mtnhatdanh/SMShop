@@ -79,3 +79,11 @@ App::down(function()
 */
 
 require app_path().'/filters.php';
+
+Item::creating(function($item){
+	if (!$item->isValid()) return false;
+});
+
+Item::updating(function($item){
+	if (!$item->isValid()) return false;
+});
