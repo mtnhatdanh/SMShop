@@ -12,6 +12,16 @@ class AdminController extends Controller {
 	}
 
 	/**
+	 * Create User
+	 * @return View
+	 */
+	public function getCreateUser(){
+		$notification = Cache::get('notification');
+		Cache::forget('notification');
+		return View::make('Admin_View.user-create', array('notification'=>$notification));
+	}
+
+	/**
 	 * Manage Item
 	 * @return View
 	 */

@@ -44,7 +44,7 @@
       <div class="container">
         <div class="row">
           <ul>
-            <li><a href="#">Check out</a></li>
+            <li><a href="{{Asset('check-out')}}">Check out</a></li>
             <li  id="cart">
               <a href="javascript:{}" onclick="showCart()">
                 <span class="glyphicon glyphicon-shopping-cart"></span>Cart<span id="cartSum"><?php
@@ -63,8 +63,10 @@
               </a>
             </li>
             <li>
-              @if (!Session::has('user'))
+              @if (!Session::has('pax'))
               <a href="javascript:{}" onclick="showLogin()">Log In</a>
+              @else
+              <a href="#"><span class="glyphicon glyphicon-user"></span>{{Session::get('pax')}}</a>
               @endif
             </li>
           </ul>
@@ -124,8 +126,60 @@
         </div>
       </div>
     </div>
+    
+    <!-- Modal new pax -->
+    {{Former::open()->id('form-new-account')}}
+    <div class="modal fade" id="myNewAccount">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+            <h4 class="modal-title">New account</h4>
+          </div>
+          <div class="modal-body">
+            <div class="row form-group">
+              <div class="col-sm-8 col-sm-offset-2">
+                {{Former::text('email')->class('form-control')->placeholder('Enter your email..')}}
+              </div>
+            </div>
+            <div class="row form-group">
+              <div class="col-sm-8 col-sm-offset-2">
+                {{Former::password('password')->class('form-control')->placeholder('Enter your password..')}}
+              </div>
+            </div>
+            <div class="row form-group">
+              <div class="col-sm-8 col-sm-offset-2">
+                {{Former::password('re_password')->class('form-control')->placeholder('Re-enter your password..')}}
+              </div>
+            </div>
+            <div class="row form-group">
+              <div class="col-sm-8 col-sm-offset-2">
+                {{Former::text('address')->class('form-control')->placeholder('Enter your address..')}}
+              </div>
+            </div>
+            <div class="row form-group">
+              <div class="col-sm-8 col-sm-offset-2">
+                {{Former::text('phone')->class('form-control')->placeholder('Enter your phone number..')}}
+              </div>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <div class="row">
+              <div class="col-sm-4 col-sm-offset-2">
+                <button type="submit" class="btn btn-primary btn-block">Sign Up</button>
+              </div>
+              <div class="col-sm-4">
+                <button type="button" class="btn btn-default btn-block" data-dismiss="modal">Close</button>
+              </div>
+            </div>
+          </div>
+        </div><!-- /.modal-content -->
+      </div><!-- /.modal-dialog -->
+    </div><!-- /.modal -->
+    {{Former::close()}}
 
     <!-- Modal Login -->
+    {{Former::open()->id('form-login')}}
     <div class="modal fade" id="myLogin" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
       <div class="modal-dialog">
         <div class="modal-content">
@@ -135,24 +189,27 @@
           </div>
           <div class="modal-body">
             <section id="login-section">
-              <form action="" method="post" id="form-login">
-                <div class="row">
-                  <div class="col-sm-8 col-sm-offset-2 form-group">
-                    <label for="inputEmail">Email</label>
-                    <input type="text" name="email" id="inputEmail" class="form-control" required="required" placeholder="Your email..">
-                  </div>
-                  <div class="col-sm-8 col-sm-offset-2 form-group">
-                    <label for="inputPassword" class="control-label">Password</label>
-                    <input type="text" name="password" id="inputPassword" class="form-control" required="required" placeholder="Your password..">
+                <div class="row form-group">
+                  <div class="col-sm-8 col-sm-offset-2">
+                    {{Former::text('email')->class('form-control')->placeholder('Your email..')}}
                   </div>
                 </div>
-              </form>
+                <div class="row form-group">
+                  <div class="col-sm-8 col-sm-offset-2">
+                    {{Former::password('password')->class('form-control')->placeholder('Your password..')}}
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-sm-8 col-sm-offset-2">
+                    <span>Don't have an account? <a href="javascript:{}" onclick="showNewAccount()">Signup</a> here!!</span>
+                  </div>
+                </div>
             </section>
           </div>
           <div class="modal-footer">
             <div class="row">
               <div class="col-sm-4 col-sm-offset-2">
-                <button type="button" class="btn btn-primary btn-block">Log in</button>
+                <button type="submit" class="btn btn-primary btn-block">Log in</button>
               </div>
               <div class="col-sm-3">
                 <button type="button" class="btn btn-default btn-block" data-dismiss="modal">Close</button>
@@ -162,8 +219,96 @@
         </div>
       </div>
     </div>
+    {{Former::close()}}
+
+    <div class="modal fade" id="notification-modal">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+            <h4 class="modal-title">Notification</h4>
+          </div>
+          <div class="modal-body">
+            <div id="div-notification"></div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal" onclick="location.reload()">Close</button>
+          </div>
+        </div><!-- /.modal-content -->
+      </div><!-- /.modal-dialog -->
+    </div><!-- /.modal -->
 
     <script>
+
+      $('#form-new-account').validate({
+        rules: {
+          email: {
+            email:true,
+            required:true,
+            remote:{
+              url:"{{Asset('check-email-exist')}}",
+              type: 'post'
+            }
+          },
+          address: {
+            required: true,
+            minlength: 6
+          },
+          phone: {
+            required: true,
+            minlength: 9
+          },
+          password: {
+            required: true,
+            minlength: 6,
+          },
+          re_password: {
+            required: true,
+            equalTo: "#password"
+          }
+        },
+        submitHandler: function(form){
+          $('#myNewAccount').modal('hide');
+          $.ajax({
+              url: '{{Asset('sign-up')}}',
+              type: 'post',
+              data: $(form).serialize(),
+              success: function (data) {
+                $('#div-notification').html(data);
+                $('#notification-modal').modal('show');
+              }
+            });
+        }
+      });
+
+      $('#form-login').validate({
+        rules: {
+          email: {
+            required: true,
+            email: true,
+          }, 
+          password: {
+            required: true,
+          }
+        },
+        submitHandler: function(form) {
+          $.ajax({
+              url: '{{Asset('sign-in')}}',
+              type: 'post',
+              data: $(form).serialize(),
+              success: function (data) {
+                $('#myLogin').modal('hide');
+                $('#div-notification').html(data);
+                $('#notification-modal').modal('show');
+              }
+            });
+        }
+      });
+
+      function showNewAccount(){
+        $('#myLogin').modal('hide');
+        $('#myNewAccount').modal('show');
+      }
 
       function showCart(){
         $('#myCart').modal('show');
@@ -179,17 +324,7 @@
       }
 
       function showLogin(){
-        $('#myLogin').modal('show');
-        $.ajax({
-            url: '{{Asset('log-in')}}',
-            type: 'get',
-            data: {},
-            success: function (data) {
-              $('#div-login').html(data);
-            },
-            global: false
-          });
-      }
+        $('#myLogin').modal('show');}
 
     </script>
     

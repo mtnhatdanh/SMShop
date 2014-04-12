@@ -27,7 +27,12 @@
 						<div class="col-sm-9">
 							<p>
 								<strong>{{$itemCart->size}}</strong><br/>
-								<span>{{number_format($item->price, 0, '.', ',')}} VND</span><br/>
+								<?php 
+								if ($item->onsale == 1) {
+									$price = $item->sale_price;
+								} else $price = $item->price;
+								?>
+								<span>{{number_format($price, 0, '.', ',')}} VND</span><br/>
 								<span><input class="itemCartQty" id="{{$key}}" type="text" value="{{$itemCart->quantity}}" size="2" style="text-align:center"></span>
 							</p>
 						</div>
@@ -37,7 +42,7 @@
 							<span><strong>Thành tiền: </strong></span>
 						</div>
 						<div class="col-sm-5">
-							<span>{{number_format($item->price*$itemCart->quantity, 0, '.', ',')}} VND</span>
+							<span>{{number_format($price*$itemCart->quantity, 0, '.', ',')}} VND</span>
 						</div>
 						<div class="col-sm-4">
 							<div class="cartRemove">
@@ -49,7 +54,7 @@
 			</div>
 		</div>
 	</div>
-	<?php $sumVND +=  $item->price*$itemCart->quantity;?>
+	<?php $sumVND +=  $price*$itemCart->quantity;?>
 	@endforeach
 	<div class="row" style="padding:0em 0.7em 0 0.7em">
 		<div class="col-sm-12 text-center">

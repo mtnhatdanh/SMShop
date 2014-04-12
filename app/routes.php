@@ -169,15 +169,30 @@ Route::get('show-cart', function(){
 	return View::make('View_Ajax.show_cart', array('cart'=>$cart));
 });
 
-Route::get('log-in', function(){
-	return View::make('View_Ajax.login');
-});
-
 Route::filter('check_signin', function(){
 	if(!Session::has('user_admin')) {
 		return Redirect::to('signin-admin');
 	}
 });
+
+
+/**
+ * Check out handle
+ */
+
+Route::get('login', function(){
+	if (Session::has('pax')) {
+		return Redirect::to('/');
+	} else return View::make('login');
+});
+
+Route::get('check-out', function(){
+	if (!Session::has('pax')) {
+		return Redirect::to('login');
+	} else return View::make('checkout');
+});
+
+
 
 /**
  * Admin control
@@ -256,20 +271,66 @@ Route::group(array('prefix'=>'ajax'), function(){
 	});
 });
 
+/**
+ * ajax link to check email for new account signup
+ */
+Route::post('check-email-exist', function(){
+	$email = Input::get('email');
+	if (Pax::checkEmailExist($email)) {
+		return "false";
+	} else return "true";
+});
+
+/**
+ * Sign up ajax
+ */
+Route::post('sign-up', function(){
+	$rules = array(
+			'email'    => 'required|email',
+			'password' => 'required',
+			'address'  => 'required',
+			'phone'    => 'required'
+		);
+	$validator = Validator::make(Input::all(), $rules);
+	if ($validator->fails()) {
+		return Response::json('error', 400);
+	} else {
+		$pax           = new Pax;
+		$pax->email    = Input::get('email');
+		$pax->password = md5(sha1(Input::get('password')));
+		$pax->address  = Input::get('address');
+		$pax->phone    = Input::get('phone');
+		$pax->save();
+		return "Your account has been created!!";
+	}
+});
+
+/**
+ * Sign in ajax
+ */
+Route::post('sign-in', function(){
+	$email    = Input::get('email');
+	$password = md5(sha1(Input::get('password')));
+	
+	if (Pax::where('email', '=', $email)->where('password', '=', $password)->count()) {
+		$pax_id = Pax::where('email', '=', $email)->where('password', '=', $password)->first()->id;
+		$pax    = Pax::find($pax_id);
+		Session::put('pax', $pax->email);
+		return "Welcome to SMShop, $pax->email user!!";
+	} else {
+		return "Wrong email address or password";
+	}
+});
 
 Route::get('test', function(){
 
-	// $items = DB::table('items')->where(DB::raw('items.created_at BETWEEN (NOW() - INTERVAL 14 DAY) AND NOW()'))->get();
-
-	$dateTwoWeekAgo = strtotime('-2 weeks');
-	$dateTwoWeekAgo = date('Y-m-d', $dateTwoWeekAgo);
-	$items = Item::where('created_at', '>', $dateTwoWeekAgo)->get();
-
+	print_r(Session::get('pax'));
+	Session::forget('pax');
 
 
 	// dd(DB::getQueryLog());
-	echo "<br/>";
-	print_r($items);
+	// echo "<br/>";
+	// print_r($items);
 	
 	
 });

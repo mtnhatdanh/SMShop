@@ -51,10 +51,10 @@
         <div class="collapse navbar-collapse">
           <ul class="nav navbar-nav">
             <li class="dropdown @if(Session::get('active_menu')=='users') active @endif">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown">Users<b class="caret"></b></a>
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">Admin Users<b class="caret"></b></a>
               <ul class="dropdown-menu">
-                <li><a href="{{Asset('user/manage-user')}}">Manage Users</a></li>
-                <li class="hidden-xs"><a href="{{Asset('user/create-user')}}">Create user</a></li>
+                <li><a href="{{Asset('admin/manage-user')}}">Manage Users</a></li>
+                <li class="hidden-xs"><a href="{{Asset('admin/create-user')}}">Create user</a></li>
               </ul>
             </li>
 
