@@ -5,7 +5,7 @@
 @import url(http://fonts.googleapis.com/css?family=Lato:300,400,700);
 /* line 98, social/*.png */
 .social-sprite, .facebook, .skype, .yahoo {
-  background: url('/public/assets/img/social-s60fc98667c.png') no-repeat; }
+  background: url('../../assets/img/social-s60fc98667c.png') no-repeat; }
 
 /* line 9, ../sass/screen.scss */
 .facebook {
@@ -44,19 +44,27 @@ a {
   text-decoration: none; }
 
 /* line 32, ../sass/screen.scss */
+hr {
+  border-color: #d3d3d3; }
+
+/* line 34, ../sass/screen.scss */
 .drop {
   display: none; }
 
-/* line 34, ../sass/screen.scss */
+/* line 36, ../sass/screen.scss */
 span.badge {
   font-family: "Helvetica Neue",Helvetica,Arial,sans-serif; }
 
-/* line 38, ../sass/screen.scss */
+/* line 40, ../sass/screen.scss */
+h3 {
+  font-family: Helvetica, Arial, sans-serif; }
+
+/* line 42, ../sass/screen.scss */
 label.error {
   color: #e74c3c;
   font-weight: normal; }
 
-/* line 40, ../sass/screen.scss */
+/* line 44, ../sass/screen.scss */
 #bar {
   position: fixed;
   left: 0px;
@@ -65,7 +73,7 @@ label.error {
   height: 34px;
   background: url(../../assets/img/bg_header_top.png) repeat-x transparent;
   z-index: 100; }
-  /* line 48, ../sass/screen.scss */
+  /* line 52, ../sass/screen.scss */
   #bar ul {
     list-style: none;
     width: 100%;
@@ -76,7 +84,7 @@ label.error {
     word-spacing: 0.3em;
     text-transform: uppercase;
     background: #1A171B; }
-    /* line 58, ../sass/screen.scss */
+    /* line 62, ../sass/screen.scss */
     #bar ul li {
       position: relative;
       float: right;
@@ -87,20 +95,21 @@ label.error {
       line-height: 24px;
       white-space: nowrap;
       color: #fff; }
-      /* line 59, ../sass/screen.scss */
+      /* line 63, ../sass/screen.scss */
       #bar ul li:first-child {
         background: none; }
-      /* line 69, ../sass/screen.scss */
+      /* line 73, ../sass/screen.scss */
       #bar ul li a {
         font-size: 0.8em;
         text-decoration: none;
         color: #fff; }
-        /* line 73, ../sass/screen.scss */
+        /* line 77, ../sass/screen.scss */
         #bar ul li a:hover {
           text-decoration: underline; }
 
-/* line 79, ../sass/screen.scss */
+/* line 83, ../sass/screen.scss */
 header {
+  font-family: Helvetica, Arial;
   position: absolute;
   height: 100px;
   background-color: #fff;
@@ -111,21 +120,21 @@ header {
   -webkit-box-shadow: lightgrey 0px 5px 20px;
   -moz-box-shadow: lightgrey 0px 5px 20px;
   box-shadow: lightgrey 0px 5px 20px; }
-  /* line 89, ../sass/screen.scss */
+  /* line 94, ../sass/screen.scss */
   header div#nav_header {
     margin-top: 37px; }
-    /* line 91, ../sass/screen.scss */
+    /* line 96, ../sass/screen.scss */
     header div#nav_header a#logotype > img {
       height: 70px;
       margin-top: -10px; }
-  /* line 96, ../sass/screen.scss */
+  /* line 101, ../sass/screen.scss */
   header ul {
     list-style: none; }
-  /* line 99, ../sass/screen.scss */
+  /* line 104, ../sass/screen.scss */
   header #subNav {
     line-height: 0.8em;
     margin: 0.2em 0 0.2em 0; }
-    /* line 102, ../sass/screen.scss */
+    /* line 107, ../sass/screen.scss */
     header #subNav li {
       display: inline;
       padding: 0 0 0 1.6em;
@@ -133,20 +142,20 @@ header {
       font-size: 0.8em;
       letter-spacing: 0.12em;
       text-transform: uppercase; }
-      /* line 103, ../sass/screen.scss */
+      /* line 108, ../sass/screen.scss */
       header #subNav li:first-child {
         background: none; }
-      /* line 112, ../sass/screen.scss */
+      /* line 117, ../sass/screen.scss */
       header #subNav li a {
         text-decoration: none;
         color: #1a171b; }
-        /* line 115, ../sass/screen.scss */
+        /* line 120, ../sass/screen.scss */
         header #subNav li a:hover {
           text-decoration: underline; }
-  /* line 119, ../sass/screen.scss */
+  /* line 124, ../sass/screen.scss */
   header #nav {
     margin-top: 0.8em; }
-    /* line 121, ../sass/screen.scss */
+    /* line 126, ../sass/screen.scss */
     header #nav li {
       display: inline;
       padding: 0 0 0 1.3em;
@@ -155,10 +164,10 @@ header {
       font-weight: bold;
       letter-spacing: 0.2em;
       text-transform: uppercase; }
-      /* line 122, ../sass/screen.scss */
+      /* line 127, ../sass/screen.scss */
       header #nav li:first-child {
         background: none; }
-      /* line 132, ../sass/screen.scss */
+      /* line 137, ../sass/screen.scss */
       header #nav li a {
         display: inline;
         margin: 5px;
@@ -177,19 +186,19 @@ header {
         text-decoration: none;
         color: #333333;
         text-shadow: 0px 0px 1px #aaaaaa; }
-        /* line 141, ../sass/screen.scss */
+        /* line 146, ../sass/screen.scss */
         header #nav li a:hover {
           color: #e74c3c;
           margin: 0 15px 0 15px; }
 
-/* line 151, ../sass/screen.scss */
+/* line 156, ../sass/screen.scss */
 div#main {
   position: relative;
   top: 126px;
   z-index: 2; }
-  /* line 155, ../sass/screen.scss */
+  /* line 160, ../sass/screen.scss */
   div#main div#content {
-    min-height: 500px;
+    min-height: 750px;
     margin-top: -1em;
     margin-bottom: 2em;
     background-color: #fff;
@@ -198,32 +207,32 @@ div#main {
     box-shadow: #999999 0px 15px 40px;
     padding: 2em 2em 2em 2em; }
 
-/* line 167, ../sass/screen.scss */
+/* line 172, ../sass/screen.scss */
 div#content li.active {
   background: #e8e8e8; }
-/* line 170, ../sass/screen.scss */
+/* line 175, ../sass/screen.scss */
 div#content a {
   color: #1a171b; }
-/* line 179, ../sass/screen.scss */
+/* line 184, ../sass/screen.scss */
 div#content nav#nav_header {
   margin-bottom: 2em; }
-  /* line 181, ../sass/screen.scss */
+  /* line 186, ../sass/screen.scss */
   div#content nav#nav_header li {
     font-weight: bold; }
-/* line 188, ../sass/screen.scss */
+/* line 193, ../sass/screen.scss */
 div#content nav#categories ul#left_nav > li {
   margin-bottom: 1em; }
-  /* line 190, ../sass/screen.scss */
+  /* line 195, ../sass/screen.scss */
   div#content nav#categories ul#left_nav > li ul {
     font-weight: normal; }
-    /* line 192, ../sass/screen.scss */
+    /* line 197, ../sass/screen.scss */
     div#content nav#categories ul#left_nav > li ul li {
       padding-left: 1em; }
 
-/* line 201, ../sass/screen.scss */
+/* line 206, ../sass/screen.scss */
 div#products_container {
   margin: 1em 0 1em 0; }
-  /* line 203, ../sass/screen.scss */
+  /* line 208, ../sass/screen.scss */
   div#products_container div.products {
     padding: 1em;
     margin-top: 1em;
@@ -231,26 +240,26 @@ div#products_container {
     -webkit-box-shadow: lightgrey 0px 1px 2px;
     -moz-box-shadow: lightgrey 0px 1px 2px;
     box-shadow: lightgrey 0px 1px 2px; }
-    /* line 208, ../sass/screen.scss */
+    /* line 213, ../sass/screen.scss */
     div#products_container div.products:hover {
       -webkit-box-shadow: #999999 0px 1px 3px;
       -moz-box-shadow: #999999 0px 1px 3px;
       box-shadow: #999999 0px 1px 3px; }
-    /* line 211, ../sass/screen.scss */
+    /* line 216, ../sass/screen.scss */
     div#products_container div.products img {
       margin: auto;
       height: 13em; }
 
-/* line 218, ../sass/screen.scss */
+/* line 223, ../sass/screen.scss */
 footer {
   min-height: 100px;
   padding: 1em 0em 1em 0em;
   color: #333333;
   border-top: solid 1px #d3d3d3; }
-  /* line 223, ../sass/screen.scss */
+  /* line 228, ../sass/screen.scss */
   footer ul.social-links li {
     list-style: none; }
-    /* line 224, ../sass/screen.scss */
+    /* line 229, ../sass/screen.scss */
     footer ul.social-links li a {
       display: block;
       margin-left: 0.4em;
@@ -272,7 +281,7 @@ footer {
       -o-transition-timing-function: ease-in;
       transition-timing-function: ease-in; }
 
-/* line 240, ../sass/screen.scss */
+/* line 245, ../sass/screen.scss */
 div#mainpage img {
   -webkit-box-shadow: lightgrey 0px 1px 3px;
   -moz-box-shadow: lightgrey 0px 1px 3px;
@@ -280,7 +289,7 @@ div#mainpage img {
   width: 100%;
   margin-bottom: 2em; }
 
-/* line 248, ../sass/screen.scss */
+/* line 253, ../sass/screen.scss */
 div#loading_div {
   display: none;
   position: fixed;
@@ -291,74 +300,78 @@ div#loading_div {
   width: 100%;
   background: rgba(255, 255, 255, 0.8) url(../../assets/img/ajax-loader.gif) 50% 50% no-repeat; }
 
-/* line 262, ../sass/screen.scss */
+/* line 267, ../sass/screen.scss */
 body.loading {
   overflow: hidden; }
-  /* line 264, ../sass/screen.scss */
+  /* line 269, ../sass/screen.scss */
   body.loading div#loading_div {
     display: block; }
 
-/* line 269, ../sass/screen.scss */
+/* line 274, ../sass/screen.scss */
 section#products_header {
   margin-bottom: 1em;
   padding-left: 1em; }
 
-/* line 274, ../sass/screen.scss */
+/* line 279, ../sass/screen.scss */
 div#item_detail {
   padding-bottom: 1.5em; }
-  /* line 277, ../sass/screen.scss */
+  /* line 282, ../sass/screen.scss */
   div#item_detail div#slideshow ul {
     list-style: none; }
-  /* line 280, ../sass/screen.scss */
+  /* line 285, ../sass/screen.scss */
   div#item_detail div#slideshow a {
     text-decoration: none; }
-  /* line 284, ../sass/screen.scss */
+  /* line 289, ../sass/screen.scss */
   div#item_detail img {
     width: 100%;
     -webkit-box-shadow: lightgrey 0px 1px 2px;
     -moz-box-shadow: lightgrey 0px 1px 2px;
     box-shadow: lightgrey 0px 1px 2px; }
-    /* line 287, ../sass/screen.scss */
+    /* line 292, ../sass/screen.scss */
     div#item_detail img:hover {
       -webkit-box-shadow: #999999 0px 1px 3px;
       -moz-box-shadow: #999999 0px 1px 3px;
       box-shadow: #999999 0px 1px 3px; }
-  /* line 292, ../sass/screen.scss */
+  /* line 297, ../sass/screen.scss */
   div#item_detail div#thumbs ul {
     margin-top: 20px; }
-    /* line 294, ../sass/screen.scss */
+    /* line 299, ../sass/screen.scss */
     div#item_detail div#thumbs ul li {
       float: left;
       margin-bottom: 1em; }
-  /* line 301, ../sass/screen.scss */
+  /* line 306, ../sass/screen.scss */
   div#item_detail ul#size-ul li {
     display: inline; }
-    /* line 303, ../sass/screen.scss */
+    /* line 308, ../sass/screen.scss */
     div#item_detail ul#size-ul li span {
       cursor: pointer;
       font-family: "Helvetica Neue",Helvetica,Arial,sans-serif; }
-    /* line 308, ../sass/screen.scss */
+    /* line 313, ../sass/screen.scss */
     div#item_detail ul#size-ul li span.active {
       background: #2980b9; }
 
-/* line 316, ../sass/screen.scss */
+/* line 321, ../sass/screen.scss */
 div.cart_container {
   padding: 1em 2em;
   margin-bottom: 1.5em;
   -webkit-box-shadow: lightgrey 0px 0px 2px;
   -moz-box-shadow: lightgrey 0px 0px 2px;
   box-shadow: lightgrey 0px 0px 2px; }
-  /* line 320, ../sass/screen.scss */
+  /* line 325, ../sass/screen.scss */
   div.cart_container img {
     margin-top: 0.7em; }
-  /* line 321, ../sass/screen.scss */
+  /* line 326, ../sass/screen.scss */
   div.cart_container div.cart_header {
     border-bottom: 1px solid #d3d3d3;
     margin-bottom: 0.5em; }
-  /* line 326, ../sass/screen.scss */
+  /* line 331, ../sass/screen.scss */
   div.cart_container div.cartRemove a {
     text-decoration: underline !important;
     color: #1a171b; }
-    /* line 329, ../sass/screen.scss */
+    /* line 334, ../sass/screen.scss */
     div.cart_container div.cartRemove a:hover {
       text-decoration: none !important; }
+
+/* line 340, ../sass/screen.scss */
+table#checkout_table th, table#checkout_table td {
+  border: none; }

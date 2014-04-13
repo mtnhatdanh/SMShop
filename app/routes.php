@@ -186,11 +186,35 @@ Route::get('login', function(){
 	} else return View::make('login');
 });
 
+Route::get('log-out', function(){
+	Session::forget('pax');
+	return Redirect::to('/');
+});
+
 Route::get('check-out', function(){
 	if (!Session::has('pax')) {
 		return Redirect::to('login');
 	} else return View::make('checkout');
 });
+
+Route::get('check-out-confirm', function(){
+	if (!Session::has('pax') || !Cache::has('cart')) {
+		return Response::json('error', 400);
+	} else {
+		$cart  = Cache::get('cart');
+		$data  = array('cart'=>$cart);
+		Mail::send('mail-check-out', $data, function($message){
+			$message->to(Session::get('pax'), 'SMShop Passenger')->subject('Welcome!!');
+		});
+		return Redirect::to('check-out-finish');
+	}
+});
+
+Route::get('check-out-finish', function(){
+	Cache::forget('cart');
+	return View::make('checkout-finish');
+});
+
 
 
 
@@ -208,8 +232,10 @@ Route::get('signin-admin', function(){
 });
 
 Route::post('signin-admin', function() {
-	if (Input::get('username') == 'nutran' && Input::get('password') == 'abcdef') {
-		Session::put('user_admin', 'nutran');
+	$username = Input::get('username');
+	$password = md5(sha1(Input::get('password')));
+	if (User::where('username', '=', $username)->where('password', '=', $password)->count()) {
+		Session::put('user_admin', $username);
 		Session::forget('error_signin');
 		return Redirect::to('admin/manage-items');
 	} else {
@@ -281,6 +307,13 @@ Route::post('check-email-exist', function(){
 	} else return "true";
 });
 
+Route::post('check-username-exist', function(){
+	$username = Input::get('username');
+	if (User::checkUserExist($username)) {
+		return "false";
+	} else return "true";
+});
+
 /**
  * Sign up ajax
  */
@@ -316,7 +349,7 @@ Route::post('sign-in', function(){
 		$pax_id = Pax::where('email', '=', $email)->where('password', '=', $password)->first()->id;
 		$pax    = Pax::find($pax_id);
 		Session::put('pax', $pax->email);
-		return "Welcome to SMShop, $pax->email user!!";
+		return "Welcome to SMShop, <strong>$pax->email</strong> user!!";
 	} else {
 		return "Wrong email address or password";
 	}
@@ -325,7 +358,7 @@ Route::post('sign-in', function(){
 Route::get('test', function(){
 
 	print_r(Session::get('pax'));
-	Session::forget('pax');
+	// Session::forget('pax');
 
 
 	// dd(DB::getQueryLog());

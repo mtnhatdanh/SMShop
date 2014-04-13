@@ -80,10 +80,20 @@ App::down(function()
 
 require app_path().'/filters.php';
 
+// Validation for Item class
 Item::creating(function($item){
 	if (!$item->isValid()) return false;
 });
 
 Item::updating(function($item){
 	if (!$item->isValid()) return false;
+});
+
+// Validation for User class
+User::creating(function($user){
+	if (!$user->isValid()) return false;
+});
+
+User::updating(function($user){
+	if (!$user->isValid()) return false;
 });

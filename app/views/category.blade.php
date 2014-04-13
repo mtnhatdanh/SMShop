@@ -8,10 +8,10 @@ Welcome to SM Shop
 <div id="content" class="row">
     <div class="col-sm-2">
         <nav id="nav_header">
-            <h3>{{strtoupper($category->name)}}</h3>
+            <h3>{{($category->name)}}</h3>
             <ul class="list-unstyled">
-                <li class="itemAtt_li"><a class="ajax-a" href="{{Asset('category/'.$category->name.'/view-all')}}">View All</a></span></li>
-                <li class="itemAtt_li"><a class="ajax-a" href="{{Asset('category/'.$category->name.'/new-arrivals')}}">New Arrivals</a></li>
+                <li class="itemAtt_li"><a class="ajax-a" href="{{Asset('category/'.$category->name.'/view-all')}}">Tất cả</a></span></li>
+                <li class="itemAtt_li"><a class="ajax-a" href="{{Asset('category/'.$category->name.'/new-arrivals')}}">Sản phẩm mới</a></li>
             </ul>
         </nav>
         <nav id="categories">
@@ -35,8 +35,8 @@ Welcome to SM Shop
         <div class="row">
             <div class="col-sm-12" id="div-content">
                 <div style="margin-bottom:1em;padding-left:1em;">
-                    <h3>{{strtoupper($category->name)}}</h3>
-                    <span style="text-decoration: underline;">SM Shop</span> / <span style="color:gray">{{strtoupper($category->name)}}</span>
+                    <h3>{{ucfirst($category->name)}}</h3>
+                    <span style="text-decoration: underline;">SM Shop</span> / <span style="color:gray">{{ucfirst($category->name)}}</span>
                 </div>
                 <div class="row" id="products_container">
                     <div class="col-sm-12">
@@ -53,24 +53,7 @@ Welcome to SM Shop
                 </div>
             </div > 
         </div>
-        <div class="row" style="margin-top:2em;">
-            <div class="col-sm-12">
-                <div class="row">               
-                    <footer style="margin:0em 2em 0em 2em">
-                        <div style="width:50%; float:left">
-                            <span>Copyright © 2014, design by: Minh Giang</span>
-                        </div>
-                        <div style="width:50%; float:right">
-                            <ul class="social-links clearfix list-unstyled">
-                                <li><a href="#" class="facebook"></a></li>
-                                <li><a href="#" class="skype"></a></li>
-                                <li><a href="#" class="yahoo"></a></li>
-                            </ul>
-                        </div>
-                    </footer>
-                </div>
-            </div>
-        </div>
+        @include('footer')
     </div>
 </div>
 <div id="loading_div"></div>

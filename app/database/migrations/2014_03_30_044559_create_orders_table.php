@@ -15,7 +15,7 @@ class CreateOrdersTable extends Migration {
 		//Create Orders Table
 		Schema::create('orders', function($table){
 			$table->increments('id');
-			$table->integer('user_id');
+			$table->integer('pax_id');
 			$table->date('date');
 			$table->integer('status');
 			$table->timestamps();

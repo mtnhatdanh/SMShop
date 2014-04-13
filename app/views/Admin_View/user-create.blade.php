@@ -13,7 +13,7 @@ SMShop - Create User
 </div>
 
 <div  id="content">
-	{{Former::open()->action(asset('user/create-user'))->id('form-register')}}
+	{{Former::open()->action(asset('admin/create-user'))->id('form-register')}}
 		<div class="container">
 			<div class="row form-group">
 				<div class="col-sm-3">
@@ -28,10 +28,10 @@ SMShop - Create User
 			</div>
 			<br/>
 			<div class="row form-group">
-				<div class="col-md-2">
-					<button type="submit" class="btn btn-primary">Create new user</button>
+				<div class="col-sm-2">
+					<button type="submit" class="btn btn-primary btn-block">Create user</button>
 				</div>
-				<div class="col-md-2">
+				<div class="col-sm-2">
 					<a href="{{Asset('user/manage-user')}}"><button type="button" class="btn btn-default btn-block">Back</button></a>
 				</div>
 			</div>
@@ -46,7 +46,7 @@ SMShop - Create User
 				required:true,
 				minlength:3,
 				remote:{
-					url:"{{Asset('check-username')}}",
+					url:"{{Asset('check-username-exist')}}",
 					type:"post"
 				}
 			},

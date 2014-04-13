@@ -39,24 +39,7 @@ SM Shop - Mainpage
 				<img class="main-small-img" src="{{Asset('assets/img/mainpage/main8.jpeg')}}" class="img-responsive" alt="Image">
 			</div>
 		</div>
-		<div class="row">
-			<div class="col-sm-12">
-				<footer>
-					<div class="row">
-						<div class="col-sm-6">
-							<span>Copyright © 2014, design by: Minh Giang</span>
-								        </div>
-								        <div class="col-sm-6 text-right">
-						<ul class="social-links clearfix list-unstyled">
-							<li><a href="#" class="facebook"></a></li>
-							<li><a href="#" class="skype"></a></li>
-							<li><a href="#" class="yahoo"></a></li>
-						</ul>
-								        </div>
-					</div>
-				</footer>
-			</div>
-		</div>
+		@include('footer')
 	</div>
 </div>
 

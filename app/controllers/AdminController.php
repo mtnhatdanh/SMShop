@@ -21,6 +21,39 @@ class AdminController extends Controller {
 		return View::make('Admin_View.user-create', array('notification'=>$notification));
 	}
 
+	public function postCreateUser(){
+		$user           = new User;
+		$user->username = Input::get('username');
+		$user->password = md5(sha1(Input::get('password')));
+		$user->save();
+
+		$notification = new Notification;
+		$notification->set('success', 'User has been created!!');
+		Cache::put('notification', $notification, 10);
+		return Redirect::to('admin/create-user');
+	}
+
+	/**
+	 * Manage User function
+	 * @return View
+	 */
+	public function getManageUser(){
+		$notification = Cache::get('notification');
+		Cache::forget('notification');
+		return View::make('Admin_View.user-manage', array('notification'=>$notification));
+	}
+
+	public function postDeleteUser(){
+		$user_id = Input::get('user_id');
+		$user = User::find($user_id);
+		$user->delete();
+
+		$notification = new Notification;
+		$notification->set('success', 'Delete user successfully!!!');
+		Cache::put('notification', $notification, 10);
+		return Redirect::to('admin/manage-user');
+	}
+
 	/**
 	 * Manage Item
 	 * @return View
@@ -38,10 +71,10 @@ class AdminController extends Controller {
 	}
 
 	public function postDeleteItem(){
-		$item_id = Input::get('item_id');
+		$item_id    = Input::get('item_id');
 		$itemAtt_id = Input::get('itemAtt_id');
-
-		$item = Item::find($item_id);
+		
+		$item       = Item::find($item_id);
 
 		// Delete image file
 		File::delete(public_path().'/assets/img/products/'.$item->urlPic1);

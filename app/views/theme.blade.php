@@ -44,21 +44,23 @@
       <div class="container">
         <div class="row">
           <ul>
-            <li><a href="{{Asset('check-out')}}">Check out</a></li>
+            <li>
+              <?php
+               if (!Cache::has('cart')) {
+                 $sumQuantity = 0;
+               } else {
+                $cart = (Cache::get('cart'));
+                $sumQuantity = 0;
+                foreach ($cart as $itemCart) {
+                  $sumQuantity += $itemCart->quantity;
+                }
+               }
+              ?>
+              <a href="{{Asset('check-out')}}">Check out</a>
+            </li>
             <li  id="cart">
               <a href="javascript:{}" onclick="showCart()">
-                <span class="glyphicon glyphicon-shopping-cart"></span>Cart<span id="cartSum"><?php
-                   if (!Cache::has('cart')) {
-                     echo ('(0)');
-                   } else {
-                    $cart = (Cache::get('cart'));
-                    $sumQuantity = 0;
-                    foreach ($cart as $itemCart) {
-                      $sumQuantity += $itemCart->quantity;
-                    }
-                    echo ('('.$sumQuantity.')');
-                   }
-                  ?>
+                <span class="glyphicon glyphicon-shopping-cart"></span>Cart<span id="cartSum">({{$sumQuantity}})
                 </span>
               </a>
             </li>
@@ -66,7 +68,7 @@
               @if (!Session::has('pax'))
               <a href="javascript:{}" onclick="showLogin()">Log In</a>
               @else
-              <a href="#"><span class="glyphicon glyphicon-user"></span>{{Session::get('pax')}}</a>
+              <a href="javascript:{}" onclick="showPaxInformation()"><span class="glyphicon glyphicon-user"></span>{{Session::get('pax')}}</a>
               @endif
             </li>
           </ul>
@@ -77,10 +79,10 @@
     <header>
       <div class="container">
           <div class="row" id="nav_header">
-            <div class="col-sm-2 col-sm-offset-1">
+            <div class="col-sm-2 col-sm-offset">
               <a href="{{Asset('main')}}" id="logotype"><img src="{{Asset('assets/img/LogoSM.png')}}" class="img-responsive" alt="Image"></a>
             </div>
-            <div class="col-sm-6 text-center">
+            <div class="col-sm-8 text-center">
               <div class="row">
                 <ul id="subNav">
                   <li><a href="#">Địa điểm cửa hàng</a></li>
@@ -96,7 +98,7 @@
                   @foreach (Category::where('enable', '=', 1)->get() as $cateMainNav)
                   <li><a href="{{Asset('category/'.$cateMainNav->name)}}">{{$cateMainNav->name}}</a></li>
                   @endforeach
-                  <li><a href="{{Asset('sale')}}">Sale</a></li>
+                  <li><a href="{{Asset('sale')}}">Khuyến mãi</a></li>
                 </ul>
               </div>
             </div>
@@ -121,7 +123,7 @@
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-            <button type="button" class="btn btn-primary">CHECK OUT</button>
+            <a href="{{asset('check-out')}}"><button type="button" class="btn btn-primary">CHECK OUT</button></a>
           </div>
         </div>
       </div>
@@ -221,6 +223,7 @@
     </div>
     {{Former::close()}}
 
+    <!-- Notification Modal -->
     <div class="modal fade" id="notification-modal">
       <div class="modal-dialog">
         <div class="modal-content">
@@ -232,14 +235,77 @@
             <div id="div-notification"></div>
           </div>
           <div class="modal-footer">
-            <button type="button" class="btn btn-default" data-dismiss="modal" onclick="location.reload()">Close</button>
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
           </div>
         </div><!-- /.modal-content -->
       </div><!-- /.modal-dialog -->
     </div><!-- /.modal -->
 
+    <!-- Modal for check out confirm -->
+    <div class="modal fade" id="checkout-modal">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+            <h4 class="modal-title">Xác nhận</h4>
+          </div>
+          <div class="modal-body">
+            Bạn đã kiểm tra đầy đủ thông tin??
+          </div>
+          <div class="modal-footer">
+            <a href="{{asset('check-out-confirm')}}"><button type="button" class="btn btn-primary" id="checkout-confirm-button">Xác nhận</button></a>
+            <button type="button" class="btn btn-default" data-dismiss="modal">Đóng</button>
+          </div>
+        </div><!-- /.modal-content -->
+      </div><!-- /.modal-dialog -->
+    </div><!-- /.modal -->
+
+    <!-- Pax Infomation Modal -->
+    <div class="modal fade" id="pax-info-modal">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+            <h4 class="modal-title">Account Infomation</h4>
+          </div>
+          <div class="modal-body">
+            @if (Session::has('pax'))
+            <?php
+            $email = Session::get('pax');
+            $pax   = Pax::where('email', '=', $email)->first();
+            ?>
+            <div class="row">
+              <div class="col-sm-12">
+                <table class="table table-responsive table-condensed" id="checkout_table" style="margin-top:1em">
+                  <tr>
+                    <th>Email:</th>
+                    <td>{{$pax->email}}</td>
+                  </tr>
+                  <tr>
+                    <th>Địa chỉ:</th>
+                    <td>{{$pax->address}}</td>
+                  </tr>
+                  <tr>
+                    <th>Số điện thoại:</th>
+                    <td>{{$pax->phone}}</td>
+                  </tr>
+                </table>
+              </div>
+            </div>
+            @endif
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            <a href="{{asset('log-out')}}"><button type="button" class="btn btn-primary">Log out</button></a>
+          </div>
+        </div><!-- /.modal-content -->
+      </div><!-- /.modal-dialog -->
+    </div><!-- /.modal -->
+
+
     <script>
 
+      // New account form
       $('#form-new-account').validate({
         rules: {
           email: {
@@ -281,6 +347,7 @@
         }
       });
 
+      // login form
       $('#form-login').validate({
         rules: {
           email: {
@@ -325,6 +392,14 @@
 
       function showLogin(){
         $('#myLogin').modal('show');}
+
+      function showPaxInformation(){
+        $('#pax-info-modal').modal('show');
+      }
+
+      $('#notification-modal').on('hidden.bs.modal', function(e){
+        location.reload();
+      })
 
     </script>
     

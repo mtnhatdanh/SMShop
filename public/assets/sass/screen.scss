@@ -29,11 +29,15 @@ body {
 
 a {text-decoration: none;}
 
+hr {border-color:#d3d3d3}
+
 .drop {display: none;}
 
 span.badge {
 	font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
 }
+
+h3 {font-family: Helvetica, Arial, sans-serif;}
 
 label.error {color: #e74c3c; font-weight: normal;}
 
@@ -77,6 +81,7 @@ label.error {color: #e74c3c; font-weight: normal;}
 }
 
 header {
+	font-family: Helvetica, Arial;
 	position: absolute;
 	height: 100px;
 	background-color: #fff;
@@ -153,7 +158,7 @@ div#main {
 	top: 126px;
 	z-index: 2;
 	div#content {
-		min-height: 500px;
+		min-height: 750px;
 		margin-top: -1em;
 		margin-bottom: 2em;
 		background-color: #fff;
@@ -328,6 +333,12 @@ div.cart_container {
 			color: #1a171b;
 			&:hover {text-decoration: none!important;}
 		}
+	}
+}
+
+table#checkout_table {
+	th, td {
+		border: none;
 	}
 }
 

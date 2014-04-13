@@ -4,10 +4,10 @@ if ($typeLink != 'view-all' && $typeLink != 'new-arrivals') {
 }
 ?>
 <section id="products_header" style="margin-bottom:1em;padding-left:1em;">
-    <h3>SALE</h3>
+    <h3>Khuyến mãi</h3>
     <span style="text-decoration: underline;">SM Shop</span> / 
     <span>
-	    {{strtoupper($category->name)}} 
+	    {{ucfirst($category->name)}} 
 	    @if ($typeLink != 'view-all') / {{ucfirst($typeLink)}} @endif
 	    @if (isset($attLink)) / {{ucfirst($attLink)}} @endif
     </span>

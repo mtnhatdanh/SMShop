@@ -8,7 +8,7 @@ Welcome to SM Shop - Sale
 <div id="content" class="row">
     <div class="col-sm-2">
         <nav id="nav_header">
-            <h3>SALE</h3>
+            <h3>Khuyến mãi</h3>
         </nav>
         <nav id="categories">
             <ul id="left_nav">
@@ -33,8 +33,8 @@ Welcome to SM Shop - Sale
         <div class="row">
             <div class="col-sm-12" id="div-content">
                 <div style="margin-bottom:1em;padding-left:1em;">
-                    <h3>SALE</h3>
-                    <span style="text-decoration: underline;">SM Shop</span> / <span style="color:gray">Sale</span>
+                    <h3>Khuyến mãi</h3>
+                    <span style="text-decoration: underline;">SM Shop</span> / <span style="color:gray">Khuyến mãi</span>
                 </div>
                 <div class="row" id="products_container">
                     <div class="col-sm-12">
