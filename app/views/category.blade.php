@@ -56,7 +56,6 @@ Welcome to SM Shop
         @include('footer')
     </div>
 </div>
-<div id="loading_div"></div>
 
 <script>
     $(document).ready(function(){
@@ -100,22 +99,7 @@ Welcome to SM Shop
             });
             return false;
         });
-
-        // jquery for loading gif
-        $abcdef = $('body');
-
-        $(document).on({
-            ajaxStart: function() { 
-                $abcdef.addClass("loading");
-            },
-            ajaxStop: function() { 
-                $abcdef.removeClass("loading");
-            }    
-        });
-
-        
-        
-    })
+    });
 </script>
 
 @endsection

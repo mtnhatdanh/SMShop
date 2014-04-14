@@ -180,10 +180,10 @@ Route::filter('check_signin', function(){
  * Check out handle
  */
 
-Route::get('login', function(){
+Route::get('checkout-login', function(){
 	if (Session::has('pax')) {
 		return Redirect::to('/');
-	} else return View::make('login');
+	} else return View::make('checkout-login');
 });
 
 Route::get('log-out', function(){
@@ -193,7 +193,9 @@ Route::get('log-out', function(){
 
 Route::get('check-out', function(){
 	if (!Session::has('pax')) {
-		return Redirect::to('login');
+		return Redirect::to('checkout-login');
+	} elseif (!Cache::has('cart')) {
+		return View::make('checkout-empty-cart');
 	} else return View::make('checkout');
 });
 
@@ -201,8 +203,44 @@ Route::get('check-out-confirm', function(){
 	if (!Session::has('pax') || !Cache::has('cart')) {
 		return Response::json('error', 400);
 	} else {
+
 		$cart  = Cache::get('cart');
 		$data  = array('cart'=>$cart);
+
+		// Save order to database
+		
+		$pax = Pax::where('email', '=', Session::get('pax'))->first();
+		
+		$order         = new Order;
+		$order->pax_id = $pax->id;
+		$order->date   = date('Y-m-d');
+		$order->status = 0;
+		$success       = $order->save();
+		if (!$success) {
+			return Response::json('order save error', 400);
+		}
+		$order_id = $order->id;
+
+		foreach ($cart as $key => $itemCart) {
+			$orderDetail           = new OrderDetail;
+			$orderDetail->order_id = $order_id;
+			$orderDetail->item_id  = $itemCart->item_id;
+			$orderDetail->size     = $itemCart->size;
+			$orderDetail->qty      = $itemCart->quantity;
+
+			$item = Item::find($itemCart->item_id);
+			if ($item->onsale) {
+				$price = $item->sale_price;
+			} else $price = $item->price;
+			$orderDetail->price = $price;
+			$success            = $orderDetail->save();
+			if (!$success) {
+				return Response::json('OrderDetail save error', 400);
+			}
+		}
+
+
+		// Send mail to passenger
 		Mail::send('mail-check-out', $data, function($message){
 			$message->to(Session::get('pax'), 'SMShop Passenger')->subject('Welcome!!');
 		});
@@ -357,7 +395,7 @@ Route::post('sign-in', function(){
 
 Route::get('test', function(){
 
-	print_r(Session::get('pax'));
+	// $pax = Pax::where('email', '=', Session::get('pax'))->first();
 	// Session::forget('pax');
 
 

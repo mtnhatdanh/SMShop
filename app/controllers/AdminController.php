@@ -202,4 +202,42 @@ class AdminController extends Controller {
 
 	}
 
+	/**
+	 * Order Report
+	 * @return View
+	 */
+	public function getOrderReport(){
+		$notification = Cache::get('notification');
+		Cache::forget('notification');
+		return View::make('Admin_View.order-report', array('notification'=>$notification));
+	}
+
+	public function postOrderReport(){
+		$from_day = Input::get('from_day');
+		$to_day   = Input::get('to_day');
+		$status   = Input::get('status');
+
+		$orders = Order::whereBetween('date', array($from_day, $to_day));
+		if ($status != 'all') {
+			$orders = $orders->where('status', '=', $status);
+		}
+		$orders = $orders->orderBy('date', 'asc')->get();
+
+		return View::make('Admin_View.order-report-table', array('orders'=>$orders));
+	}
+
+	// function change status ajax
+	public function postOrderChangeStatus(){
+		$order_id      = Input::get('order_id');
+		$order         = Order::find($order_id);
+		$order->status = Input::get('status');
+		$order->save();
+	}
+
+	// order detail ajax
+	public function postOrderDetail(){
+		$order = Order::find(Input::get('order_id'));
+		return View::make('Admin_View.order-detail-table', array('order'=>$order));
+	}
+
 }

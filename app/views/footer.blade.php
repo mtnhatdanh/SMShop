@@ -7,9 +7,9 @@
                 </div>
                 <div style="width:50%; float:right">
                     <ul class="social-links clearfix list-unstyled">
-                        <li><a href="#" class="facebook"></a></li>
-                        <li><a href="skype:minhgiang0801?chat" class="skype"></a></li>
-                        <li><a href="ymsgr:SendIM?mtnhatdanh" class="yahoo"></a></li>
+                        <li><a href="https://www.facebook.com/hanghieu.chobeyeu" class="facebook"></a></li>
+                        <li><a href="skype:hanghieuchobeyeu?chat" class="skype"></a></li>
+                        <li><a href="ymsgr:SendIM?hanghieuchobeyeu" class="yahoo"></a></li>
                     </ul>
                 </div>
             </footer>

@@ -48,10 +48,10 @@
                         <td>No</td>
                         <td>Hình</td>
                         <td>Item</td>
-                        <td>Size</td>
-                        <td>Số lượng</td>
-                        <td>Giá</td>
-                        <td>Thành tiền</td>
+                        <td class="text-center">Size</td>
+                        <td class="text-center">Số lượng</td>
+                        <td class="text-right">Giá</td>
+                        <td class="text-right">Thành tiền</td>
                     </tr>
                     <?php 
                     $no          = 0; 

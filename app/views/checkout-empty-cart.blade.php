@@ -1,7 +1,7 @@
 @extends("theme")
 
 @section('title')
-Check out - finish
+Check out - Empty Cart.
 @endsection
 
 @section("content")
@@ -15,9 +15,7 @@ Check out - finish
     </div>
     <div class="row" style="margin: 1em 0.7em 0em 0.7em; min-height: 30em">
 	    <div class="col-sm-12 text-center" style="margin-top: 3em;">
-	    	<p>Thank you for buying SMShop's products.<br/>
-            Your order has been received and will be processed on 24 hourse.</p>
-            <a href="{{asset('/')}}"><button class="btn btn-default">Back to home page</button></a>
+	    	<span>Your cart is empty!! Please pick some items!!</span>
 	    </div>
 	</div>
     @include('footer')

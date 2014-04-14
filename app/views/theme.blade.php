@@ -109,6 +109,7 @@
     <div id="main" class="container">
       @yield('content')
     </div>
+    <div id="loading_div"></div>
 
     <!-- Modal Cart -->
     <div class="modal fade" id="myCart" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
@@ -253,7 +254,7 @@
             Bạn đã kiểm tra đầy đủ thông tin??
           </div>
           <div class="modal-footer">
-            <a href="{{asset('check-out-confirm')}}"><button type="button" class="btn btn-primary" id="checkout-confirm-button">Xác nhận</button></a>
+            <button type="button" class="btn btn-primary" id="checkout-confirm-button">Xác nhận</button>
             <button type="button" class="btn btn-default" data-dismiss="modal">Đóng</button>
           </div>
         </div><!-- /.modal-content -->
@@ -304,6 +305,13 @@
 
 
     <script>
+
+      // Checkout confirm button click
+      $('#checkout-confirm-button').click(function(){
+        $('#checkout-modal').modal('hide');
+        $('body').addClass('loading');
+        window.location.replace("{{asset('check-out-confirm')}}");
+      });
 
       // New account form
       $('#form-new-account').validate({
@@ -400,6 +408,18 @@
       $('#notification-modal').on('hidden.bs.modal', function(e){
         location.reload();
       })
+
+      // jquery for loading gif
+      $abcdef = $('body');
+
+      $(document).on({
+          ajaxStart: function() { 
+              $abcdef.addClass("loading");
+          },
+          ajaxStop: function() { 
+              $abcdef.removeClass("loading");
+          }    
+      });    
 
     </script>
     

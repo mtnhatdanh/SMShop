@@ -50,7 +50,7 @@
         </div>
         <div class="collapse navbar-collapse">
           <ul class="nav navbar-nav">
-            <li class="dropdown @if(Session::get('active_menu')=='users') active @endif">
+            <li class="dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown">Admin Users<b class="caret"></b></a>
               <ul class="dropdown-menu">
                 <li><a href="{{Asset('admin/manage-user')}}">Manage Users</a></li>
@@ -58,13 +58,21 @@
               </ul>
             </li>
 
-            <li class="dropdown @if(Session::get('active_menu')=='items') active @endif hidden-xs">
+            <li class="dropdown hidden-xs">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown">Items<b class="caret"></b></a>
               <ul class="dropdown-menu">
                 <li><a href="{{Asset('admin/create-item')}}">Create Item</a></li>
                 <li><a href="{{Asset('admin/manage-items')}}">Manage Items</a></li>
               </ul>
             </li>
+            
+            <li class="dropdown hidden-xs">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">Order<b class="caret"></b></a>
+              <ul class="dropdown-menu">
+                <li><a href="{{Asset('admin/order-report')}}">Order Report</a></li>
+              </ul>
+            </li>
+
           </ul>
           <ul class="nav navbar-nav navbar-right hidden-xs">
               <li><a href="#"><span class="glyphicon glyphicon-user"></span> {{ucfirst(Session::get('user_admin'))}}</a></li>
