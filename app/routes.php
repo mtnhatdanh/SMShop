@@ -199,13 +199,14 @@ Route::get('check-out', function(){
 	} else return View::make('checkout');
 });
 
-Route::get('check-out-confirm', function(){
+Route::post('check-out-confirm', function(){
 	if (!Session::has('pax') || !Cache::has('cart')) {
 		return Response::json('error', 400);
 	} else {
 
-		$cart  = Cache::get('cart');
-		$data  = array('cart'=>$cart);
+		$note = Input::get('note');
+		$cart = Cache::get('cart');
+		$data = array('cart'=>$cart, 'note'=>$note);
 
 		// Save order to database
 		
@@ -215,6 +216,7 @@ Route::get('check-out-confirm', function(){
 		$order->pax_id = $pax->id;
 		$order->date   = date('Y-m-d');
 		$order->status = 0;
+		$order->note   = $note;
 		$success       = $order->save();
 		if (!$success) {
 			return Response::json('order save error', 400);
@@ -244,7 +246,7 @@ Route::get('check-out-confirm', function(){
 		Mail::send('mail-check-out', $data, function($message){
 			$message->to(Session::get('pax'), 'SMShop Passenger')->subject('Welcome!!');
 		});
-		return Redirect::to('check-out-finish');
+		// return Redirect::to('check-out-finish');
 	}
 });
 

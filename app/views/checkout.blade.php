@@ -109,6 +109,8 @@ SMShop - check out
 							<td>{{number_format($sumVND, 0, '.', ',')}} VND</td>
 						</tr>
 					</table>
+					<label for="note" class="label-control">Ghi chú</label>
+					<textarea name="note" id="note-textarea" class="form-control" style="margin-bottom: 1em;"></textarea>
 				</div>
 				<div class="panel-footer">
 					<div class="row">

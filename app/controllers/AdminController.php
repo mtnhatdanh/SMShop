@@ -240,4 +240,13 @@ class AdminController extends Controller {
 		return View::make('Admin_View.order-detail-table', array('order'=>$order));
 	}
 
+	/**
+	 * Passenger List
+	 * @return View
+	 */
+	public function getPassengerList(){
+		$paxs = Pax::paginate(15);
+		return View::make('Admin_View.passenger-list', array('paxs'=>$paxs));
+	}
+
 }

@@ -56,17 +56,17 @@
                 }
                }
               ?>
-              <a href="{{Asset('check-out')}}">Check out</a>
+              <a href="{{Asset('check-out')}}">Thanh toán</a>
             </li>
             <li  id="cart">
               <a href="javascript:{}" onclick="showCart()">
-                <span class="glyphicon glyphicon-shopping-cart"></span>Cart<span id="cartSum">({{$sumQuantity}})
+                <span class="glyphicon glyphicon-shopping-cart"></span>Giỏ hàng<span id="cartSum">({{$sumQuantity}})
                 </span>
               </a>
             </li>
             <li>
               @if (!Session::has('pax'))
-              <a href="javascript:{}" onclick="showLogin()">Log In</a>
+              <a href="javascript:{}" onclick="showLogin()">Đăng nhập</a>
               @else
               <a href="javascript:{}" onclick="showPaxInformation()"><span class="glyphicon glyphicon-user"></span>{{Session::get('pax')}}</a>
               @endif
@@ -87,7 +87,7 @@
                 <ul id="subNav">
                   <li><a href="#">Địa điểm cửa hàng</a></li>
                   <li><a href="#">Dịch vụ khách hàng</a></li>
-                  <li><a href="#">Đăng ký email</a></li>
+                  <li><a href="javascript:{}" onclick="showNewAccount()">Đăng ký thành viên</a></li>
                 </ul>
                 <div style="line-height: 4px; height:4px; padding-left: 4em">
                   <span>....................................................................................................................</span>
@@ -123,8 +123,8 @@
             <div id="div-cart"></div>
           </div>
           <div class="modal-footer">
-            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-            <a href="{{asset('check-out')}}"><button type="button" class="btn btn-primary">CHECK OUT</button></a>
+            <button type="button" class="btn btn-default" data-dismiss="modal">Thoát</button>
+            <a href="{{asset('check-out')}}"><button type="button" class="btn btn-primary">Xác nhận đơn hàng</button></a>
           </div>
         </div>
       </div>
@@ -137,42 +137,42 @@
         <div class="modal-content">
           <div class="modal-header">
             <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-            <h4 class="modal-title">New account</h4>
+            <h4 class="modal-title">Tạo tài khoản</h4>
           </div>
           <div class="modal-body">
             <div class="row form-group">
               <div class="col-sm-8 col-sm-offset-2">
-                {{Former::text('email')->class('form-control')->placeholder('Enter your email..')}}
+                {{Former::text('email')->class('form-control')->placeholder('Nhập vào email..')}}
               </div>
             </div>
             <div class="row form-group">
               <div class="col-sm-8 col-sm-offset-2">
-                {{Former::password('password')->class('form-control')->placeholder('Enter your password..')}}
+                {{Former::password('password')->class('form-control')->placeholder('Nhập vào mật khẩu..')->label('Mật khẩu')}}
               </div>
             </div>
             <div class="row form-group">
               <div class="col-sm-8 col-sm-offset-2">
-                {{Former::password('re_password')->class('form-control')->placeholder('Re-enter your password..')}}
+                {{Former::password('re_password')->class('form-control')->placeholder('Nhập lại mật khẩu..')->label('Nhập lại mật khẩu')}}
               </div>
             </div>
             <div class="row form-group">
               <div class="col-sm-8 col-sm-offset-2">
-                {{Former::text('address')->class('form-control')->placeholder('Enter your address..')}}
+                {{Former::text('address')->class('form-control')->placeholder('Nhập địa chỉ giao hàng..')->label('Địa chỉ giao hàng')}}
               </div>
             </div>
             <div class="row form-group">
               <div class="col-sm-8 col-sm-offset-2">
-                {{Former::text('phone')->class('form-control')->placeholder('Enter your phone number..')}}
+                {{Former::text('phone')->class('form-control')->placeholder('Nhập số điện thoại..')->label('Điện thoại')}}
               </div>
             </div>
           </div>
           <div class="modal-footer">
             <div class="row">
               <div class="col-sm-4 col-sm-offset-2">
-                <button type="submit" class="btn btn-primary btn-block">Sign Up</button>
+                <button type="submit" class="btn btn-primary btn-block">Đăng ký</button>
               </div>
               <div class="col-sm-4">
-                <button type="button" class="btn btn-default btn-block" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-default btn-block" data-dismiss="modal">Thoát</button>
               </div>
             </div>
           </div>
@@ -194,17 +194,17 @@
             <section id="login-section">
                 <div class="row form-group">
                   <div class="col-sm-8 col-sm-offset-2">
-                    {{Former::text('email')->class('form-control')->placeholder('Your email..')}}
+                    {{Former::text('email')->class('form-control')->placeholder('Email..')}}
                   </div>
                 </div>
                 <div class="row form-group">
                   <div class="col-sm-8 col-sm-offset-2">
-                    {{Former::password('password')->class('form-control')->placeholder('Your password..')}}
+                    {{Former::password('password')->class('form-control')->placeholder('Your password..')->label('Mật khẩu')}}
                   </div>
                 </div>
                 <div class="row">
                   <div class="col-sm-8 col-sm-offset-2">
-                    <span>Don't have an account? <a href="javascript:{}" onclick="showNewAccount()">Signup</a> here!!</span>
+                    <span>Nếu chưa là thành viên của S&M Shop, vui lòng đăng ký <a href="javascript:{}" onclick="showNewAccount()">tại đây</a>!!</span>
                   </div>
                 </div>
             </section>
@@ -212,10 +212,10 @@
           <div class="modal-footer">
             <div class="row">
               <div class="col-sm-4 col-sm-offset-2">
-                <button type="submit" class="btn btn-primary btn-block">Log in</button>
+                <button type="submit" class="btn btn-primary btn-block">Đăng nhập</button>
               </div>
               <div class="col-sm-3">
-                <button type="button" class="btn btn-default btn-block" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-default btn-block" data-dismiss="modal">Thoát</button>
               </div>
             </div>
           </div>
@@ -230,13 +230,13 @@
         <div class="modal-content">
           <div class="modal-header">
             <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-            <h4 class="modal-title">Notification</h4>
+            <h4 class="modal-title">Thông báo</h4>
           </div>
           <div class="modal-body">
             <div id="div-notification"></div>
           </div>
           <div class="modal-footer">
-            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            <button type="button" class="btn btn-default" data-dismiss="modal">Đóng</button>
           </div>
         </div><!-- /.modal-content -->
       </div><!-- /.modal-dialog -->
@@ -267,7 +267,7 @@
         <div class="modal-content">
           <div class="modal-header">
             <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-            <h4 class="modal-title">Account Infomation</h4>
+            <h4 class="modal-title">Thông tin tài khoản</h4>
           </div>
           <div class="modal-body">
             @if (Session::has('pax'))
@@ -296,8 +296,8 @@
             @endif
           </div>
           <div class="modal-footer">
-            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-            <a href="{{asset('log-out')}}"><button type="button" class="btn btn-primary">Log out</button></a>
+            <button type="button" class="btn btn-default" data-dismiss="modal">Đóng</button>
+            <a href="{{asset('log-out')}}"><button type="button" class="btn btn-primary">Đăng xuất</button></a>
           </div>
         </div><!-- /.modal-content -->
       </div><!-- /.modal-dialog -->
@@ -310,7 +310,15 @@
       $('#checkout-confirm-button').click(function(){
         $('#checkout-modal').modal('hide');
         $('body').addClass('loading');
-        window.location.replace("{{asset('check-out-confirm')}}");
+        note = $('#note-textarea').val();
+        $.ajax({
+            url: '{{asset('check-out-confirm')}}',
+            type: 'post',
+            data: {note: note},
+            success: function (data) {
+              window.location.replace("{{asset('check-out-finish')}}");
+            }
+          });
       });
 
       // New account form

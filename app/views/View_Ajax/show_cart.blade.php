@@ -46,7 +46,7 @@
 						</div>
 						<div class="col-sm-4">
 							<div class="cartRemove">
-								<a class="del-itemCart" id="{{$key}}" href="javascript:{}">Remove item</a>
+								<a class="del-itemCart" id="{{$key}}" href="javascript:{}">Hủy</a>
 							</div>
 						</div>
 					</div>

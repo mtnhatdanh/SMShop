@@ -17,6 +17,7 @@ class CreateOrdersTable extends Migration {
 			$table->increments('id');
 			$table->integer('pax_id');
 			$table->date('date');
+			$table->string('note');
 			$table->integer('status');
 			$table->timestamps();
 		});

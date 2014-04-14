@@ -50,15 +50,15 @@ $attLink       = $item->itemAtt->name;
 			@if ($item->onsale)
 			<small style="color:gray; text-decoration: line-through">Giá: {{number_format($item->price, 0, '.', ',')}} VND</small><br/>
 			@else
-			<span>Giá: {{number_format($item->price, 0, '.', ',')}} VND</span>
+			<span><strong>Giá:</strong> {{number_format($item->price, 0, '.', ',')}} VND</span>
 			@endif
 			@if ($item->onsale)
-			<span>Giá: {{number_format($item->sale_price, 0, '.', ',')}} VND</span>
+			<span><strong>Giá:</strong> {{number_format($item->sale_price, 0, '.', ',')}} VND</span>
 			@endif
 			<br/>
 		</p>
 		<p>
-			<strong>Description</strong><br/>
+			<strong>Chi tiết sản phẩm</strong><br/>
 			{{$item->description}}
 		</p>
 		<p>
@@ -77,7 +77,7 @@ $attLink       = $item->itemAtt->name;
 			</ul>
 		</p>
 		<p style="margin-top:1em">
-			<button type="button" class="btn btn-default add-to-cart">Add to cart</button>
+			<button type="button" class="btn btn-default add-to-cart">Mua hàng</button>
 		</p>
 	</div>
 </div>

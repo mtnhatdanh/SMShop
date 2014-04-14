@@ -20,7 +20,7 @@ Welcome to SM Shop
                 <li>
                     <a href="{{Asset('category/'.$category->name.'/'.$itemType->id)}}" class="category_a ajax-a">{{ucfirst($itemType->name)}}</a>
                     <ul>
-                        <li class="itemAtt_li"><a class="itemAtt_a ajax-a" href="{{Asset('category/'.$category->name.'/'.$itemType->id)}}">View all</a></li>
+                        <li class="itemAtt_li"><a class="itemAtt_a ajax-a" href="{{Asset('category/'.$category->name.'/'.$itemType->id)}}">Tất cả</a></li>
                         @foreach ($itemType->itemAtts()->where('enable', '=', 1)->get() as $itemAtt)
                         <li class="itemAtt_li"><a class="itemAtt_a ajax-a" href="{{Asset('category/'.$category->name.'/'.$itemType->id.'/att/'.$itemAtt->id)}}">{{ucfirst($itemAtt->name)}}</a></li>
                         @endforeach

@@ -42,7 +42,7 @@
         </div>
         <div class="row">
             <div class="col-sm-12">
-                Your order detail:<br/>
+                <em>Your order detail:</em><br/>
                 <table class="table table-responsive" id="mail-table">
                     <tr>
                         <td>No</td>
@@ -84,6 +84,9 @@
                         <td class="text-right"><strong>{{number_format($sumVND, 0, '.', ',')}}</strong></td>
                     </tr>
                 </table>
+                <p>
+                    <em>Your note:</em> {{$note}}
+                </p>
                 <p>
                     Your order has been received and will be processed on 24 hours. Thank you!!
                 </p>

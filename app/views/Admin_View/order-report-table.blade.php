@@ -6,6 +6,7 @@
 					<th>No</th>
 					<th>Date</th>
 					<th>Passenger</th>
+					<th>Note</th>
 					<th>Status</th>
 					<th class="text-center">Detail</th>
 				</tr>
@@ -17,6 +18,7 @@
 					<td>{{++$no}}</td>
 					<td>{{date('m/d/Y', strtotime($order->date))}}</td>
 					<td>{{$order->pax->email}}</td>
+					<td>{{$order->note}}</td>
 					<td>
 						<select name="status" id="{{$order->id}}" class="order_select">
 							<option value="0" @if ($order->status == 0) selected @endif>Waiting</option>

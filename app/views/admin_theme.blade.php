@@ -70,6 +70,7 @@
               <a href="#" class="dropdown-toggle" data-toggle="dropdown">Order<b class="caret"></b></a>
               <ul class="dropdown-menu">
                 <li><a href="{{Asset('admin/order-report')}}">Order Report</a></li>
+                <li><a href="{{Asset('admin/passenger-list')}}">Passenger List</a></li>
               </ul>
             </li>
 
