@@ -35,6 +35,7 @@ Route::get('category/{name}/{itemType_id}', function($name, $itemType_id){
 				->join('item_types', 'categories.id', '=', 'item_types.category_id')
 				->join('item_atts', 'item_types.id', '=', 'item_atts.itemType_id')
 				->join('items', 'item_atts.id', '=', 'items.itemAtt_id')
+				->orderBy('items.id', 'desc')
 				->where('categories.id', '=', $category_id)
 				->where('items.onsale', '!=', 1);
 
@@ -63,6 +64,7 @@ Route::get('category/{name}/{itemType_id}/att/{itemAtt_id}', function($name, $it
 				->join('item_types', 'categories.id', '=', 'item_types.category_id')
 				->join('item_atts', 'item_types.id', '=', 'item_atts.itemType_id')
 				->join('items', 'item_atts.id', '=', 'items.itemAtt_id')
+				->orderBy('items.id', 'desc')
 				->where('categories.id', '=', $category_id)
 				->where('item_types.id', '=', $itemType_id)
 				->where('item_atts.id', '=', $itemAtt_id)
@@ -87,6 +89,7 @@ Route::get('sale/{category_name}', function($category_name){
 				->join('item_types', 'categories.id', '=', 'item_types.category_id')
 				->join('item_atts', 'item_types.id', '=', 'item_atts.itemType_id')
 				->join('items', 'item_atts.id', '=', 'items.itemAtt_id')
+				->orderBy('items.id', 'desc')
 				->where('categories.id', '=', $category_id)
 				->where('items.onsale', '=', 1)
 				->paginate(16);
@@ -103,6 +106,7 @@ Route::get('sale/{category_name}/{itemType_id}', function($category_name, $itemT
 				->join('item_types', 'categories.id', '=', 'item_types.category_id')
 				->join('item_atts', 'item_types.id', '=', 'item_atts.itemType_id')
 				->join('items', 'item_atts.id', '=', 'items.itemAtt_id')
+				->orderBy('items.id', 'desc')
 				->where('categories.id', '=', $category_id)
 				->where('item_types.id', '=', $itemType_id)
 				->where('items.onsale', '=', 1)
@@ -300,6 +304,11 @@ Route::group(array('before'=>'check_admin_signin'), function(){
  */
 Route::controller('sale', 'SaleController');
 
+/**
+ * Info Controller
+ */
+Route::controller('info', 'InfoController');
+
 
 /**
  * Route for Ajax
@@ -374,6 +383,13 @@ Route::post('sign-up', function(){
 		$pax->address  = Input::get('address');
 		$pax->phone    = Input::get('phone');
 		$pax->save();
+
+		$data = array('email'=>Input::get('email'));
+
+		Mail::send('mail-welcome', $data, function($message){
+			$message->to(Input::get('email'), 'SMShop Passenger')->subject('Welcome to SM Shop!!');
+		});
+
 		return "Your account has been created!!";
 	}
 });

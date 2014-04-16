@@ -39,6 +39,8 @@ span.badge {
 
 h3 {font-family: Helvetica, Arial, sans-serif;}
 
+h4 {color:#e74c3c}
+
 label.error {color: #e74c3c; font-weight: normal;}
 
 #bar {
@@ -111,7 +113,7 @@ header {
 			display: inline;
 			padding: 0 0 0 1.6em;
 			background: url(http://localhost:8080/SMShop/public/assets/img/bg_icons.png?10) no-repeat -41px -40px;
-			font-size: 0.8em;
+			font-size: 0.9em;
 			letter-spacing: 0.12em;
 			text-transform: uppercase;
 			a {
@@ -142,7 +144,7 @@ header {
 				@include transition-timing-function(ease-in);
 				text-decoration: none;
 				color: #333333;
-				@include single-text-shadow();
+				// @include single-text-shadow();
 				&:hover {
 					color: #e74c3c;
 					margin: 0 15px 0 15px;
@@ -216,6 +218,19 @@ div#products_container {
 		img {
 			margin: auto;
 			height: 13em;
+		}
+	}
+}
+
+div.info_container {
+	margin: 1em 0 1em 0;
+	table {
+		th {
+			text-align: center!important;
+		}
+		td {
+			text-align: center;
+			vertical-align: middle;
 		}
 	}
 }

@@ -85,8 +85,8 @@
             <div class="col-sm-8 text-center">
               <div class="row">
                 <ul id="subNav">
-                  <li><a href="#">Địa điểm cửa hàng</a></li>
-                  <li><a href="#">Dịch vụ khách hàng</a></li>
+                  <li><a href="{{asset('info/store-locator')}}">Địa điểm cửa hàng</a></li>
+                  <li><a href="{{asset('info/shopping-guilde')}}">Hướng dẫn mua hàng</a></li>
                   <li><a href="javascript:{}" onclick="showNewAccount()">Đăng ký thành viên</a></li>
                 </ul>
                 <div style="line-height: 4px; height:4px; padding-left: 4em">

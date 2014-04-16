@@ -6,6 +6,8 @@
 					<th>No</th>
 					<th>Date</th>
 					<th>Passenger</th>
+					<th>Address</th>
+					<th>Phone</th>
 					<th>Note</th>
 					<th>Status</th>
 					<th class="text-center">Detail</th>
@@ -18,6 +20,8 @@
 					<td>{{++$no}}</td>
 					<td>{{date('m/d/Y', strtotime($order->date))}}</td>
 					<td>{{$order->pax->email}}</td>
+					<td>{{$order->pax->address}}</td>
+					<td>{{$order->pax->phone}}</td>
 					<td>{{$order->note}}</td>
 					<td>
 						<select name="status" id="{{$order->id}}" class="order_select">
