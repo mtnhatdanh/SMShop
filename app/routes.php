@@ -248,7 +248,7 @@ Route::post('check-out-confirm', function(){
 
 		// Send mail to passenger
 		Mail::send('mail-check-out', $data, function($message){
-			$message->to(Session::get('pax'), 'SMShop Passenger')->subject('Welcome!!');
+			$message->to(Session::get('pax'), 'SMShop Passenger')->subject('ORDER CONFIRMATION/XÁC NHẬN ĐƠN HÀNG');
 		});
 		// return Redirect::to('check-out-finish');
 	}

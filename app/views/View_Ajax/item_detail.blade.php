@@ -7,7 +7,7 @@ $attLink       = $item->itemAtt->name;
 <div class="row">
 	<div class="col-sm-12">
 		<section id="products_header" style="margin-bottom:1em;padding-left:1em;">
-		    <h3>{{strtoupper($category_name)}}</h3>
+		    <h3>{{ucfirst($category_name)}}</h3>
 		    <span style="text-decoration: underline;">SM Shop</span> / 
 		    <span style="color:gray">
 			    <a class="item-ajax-a" href="{{Asset('category/'.$category_name.'/view-all')}}">{{ucfirst($category_name)}}</a> 

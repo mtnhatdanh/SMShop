@@ -33,9 +33,10 @@
     {{HTML::script('assets/js/jquery-validate/jquery.validate.js')}}
 
     <!-- Galleriffic thumbnail picture jquery-->
-    <!-- {{HTML::style('assets/js/galleriffic-2.0/css/basic.css')}} -->
-    <!-- {{HTML::style('assets/js/galleriffic-2.0/css/galleriffic-1.css')}} -->
     {{HTML::script('assets/js/galleriffic-2.0/js/jquery.galleriffic.js')}}
+
+    <!-- Scroll up Jquery -->
+    {{HTML::script('assets/js/jquery.scrollUp.js')}}
     
   </head>
 
@@ -85,8 +86,8 @@
             <div class="col-sm-8 text-center">
               <div class="row">
                 <ul id="subNav">
-                  <li><a href="{{asset('info/store-locator')}}">Địa điểm cửa hàng</a></li>
-                  <li><a href="{{asset('info/shopping-guilde')}}">Hướng dẫn mua hàng</a></li>
+                  <li><a href="{{asset('info/store-locator')}}">Giới thiệu</a></li>
+                  <li><a href="{{asset('info/shopping-guide')}}">Hướng dẫn mua hàng</a></li>
                   <li><a href="javascript:{}" onclick="showNewAccount()">Đăng ký thành viên</a></li>
                 </ul>
                 <div style="line-height: 4px; height:4px; padding-left: 4em">
@@ -427,7 +428,21 @@
           ajaxStop: function() { 
               $abcdef.removeClass("loading");
           }    
-      });    
+      });
+
+      // jquery for scroll up
+      $(function () {
+        $.scrollUp({
+          scrollName: 'scrollUp', // Element ID
+          topDistance: '300', // Distance from top before showing element (px)
+          topSpeed: 300, // Speed back to top (ms)
+          animation: 'fade', // Fade, slide, none
+          animationInSpeed: 200, // Animation in speed (ms)
+          animationOutSpeed: 200, // Animation out speed (ms)
+          scrollText: '', // Text for element
+          activeOverlay: false, // Set CSS color to display scrollUp active point, e.g '#00FFFF'
+        });
+      });
 
     </script>
     

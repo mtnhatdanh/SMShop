@@ -5,7 +5,7 @@
 @import url(http://fonts.googleapis.com/css?family=Lato:300,400,700);
 /* line 98, social/*.png */
 .social-sprite, .facebook, .skype, .yahoo {
-  background: url('../../assets/img/social-s60fc98667c.png') no-repeat; }
+  background: url('/public/assets/img/social-s60fc98667c.png') no-repeat; }
 
 /* line 9, ../sass/screen.scss */
 .facebook {
@@ -28,47 +28,62 @@
   .yahoo:hover, .yahoo.yahoo_hover, .yahoo.yahoo-hover {
     background-position: 0 -336px; }
 
-/* line 18, ../sass/screen.scss */
+@media (min-width: 1600px) {
+  /* line 19, ../sass/screen.scss */
+  .container {
+    width: 1570px; } }
+/* line 24, ../sass/screen.scss */
 html {
   overflow-y: scroll;
   background: #fafafa; }
 
-/* line 24, ../sass/screen.scss */
+/* line 30, ../sass/screen.scss */
 body {
   background-color: transparent;
   color: #1a171b;
   font-family: 'Lato', Calibri, Arial, sans-serif; }
 
-/* line 30, ../sass/screen.scss */
+/* Image style */
+/* line 38, ../sass/screen.scss */
+#scrollUp {
+  bottom: 20px;
+  right: 20px;
+  height: 38px;
+  /* Height of image */
+  width: 38px;
+  /* Width of image */
+  background: url(../../assets/img/top.png) no-repeat; }
+
+/* line 47, ../sass/screen.scss */
 a {
   text-decoration: none; }
 
-/* line 32, ../sass/screen.scss */
+/* line 49, ../sass/screen.scss */
 hr {
   border-color: #d3d3d3; }
 
-/* line 34, ../sass/screen.scss */
+/* line 51, ../sass/screen.scss */
 .drop {
   display: none; }
 
-/* line 36, ../sass/screen.scss */
+/* line 53, ../sass/screen.scss */
 span.badge {
   font-family: "Helvetica Neue",Helvetica,Arial,sans-serif; }
 
-/* line 40, ../sass/screen.scss */
+/* line 57, ../sass/screen.scss */
 h3 {
   font-family: Helvetica, Arial, sans-serif; }
 
-/* line 42, ../sass/screen.scss */
+/* line 59, ../sass/screen.scss */
 h4 {
   color: #e74c3c; }
 
-/* line 44, ../sass/screen.scss */
+/* line 61, ../sass/screen.scss */
 label.error {
   color: #e74c3c;
   font-weight: normal; }
 
-/* line 46, ../sass/screen.scss */
+/* line 63, ../sass/screen.scss */
 #bar {
   position: fixed;
   left: 0px;
@@ -77,7 +92,7 @@ label.error {
   height: 34px;
   background: url(../../assets/img/bg_header_top.png) repeat-x transparent;
   z-index: 100; }
-  /* line 54, ../sass/screen.scss */
+  /* line 71, ../sass/screen.scss */
   #bar ul {
     list-style: none;
     width: 100%;
@@ -87,7 +102,7 @@ label.error {
     letter-spacing: 0.05em;
     word-spacing: 0.3em;
     background: #1A171B; }
-    /* line 64, ../sass/screen.scss */
+    /* line 81, ../sass/screen.scss */
     #bar ul li {
       position: relative;
       float: right;
@@ -98,19 +113,19 @@ label.error {
       line-height: 24px;
       white-space: nowrap;
       color: #fff; }
-      /* line 65, ../sass/screen.scss */
+      /* line 82, ../sass/screen.scss */
       #bar ul li:first-child {
         background: none; }
-      /* line 75, ../sass/screen.scss */
+      /* line 92, ../sass/screen.scss */
       #bar ul li a {
         font-size: 0.8em;
         text-decoration: none;
         color: #fff; }
-        /* line 79, ../sass/screen.scss */
+        /* line 96, ../sass/screen.scss */
         #bar ul li a:hover {
           text-decoration: underline; }
 
-/* line 85, ../sass/screen.scss */
+/* line 102, ../sass/screen.scss */
 header {
   font-family: Helvetica, Arial;
   position: absolute;
@@ -123,42 +138,42 @@ header {
   -webkit-box-shadow: lightgrey 0px 5px 20px;
   -moz-box-shadow: lightgrey 0px 5px 20px;
   box-shadow: lightgrey 0px 5px 20px; }
-  /* line 96, ../sass/screen.scss */
+  /* line 113, ../sass/screen.scss */
   header div#nav_header {
     margin-top: 37px; }
-    /* line 98, ../sass/screen.scss */
+    /* line 115, ../sass/screen.scss */
     header div#nav_header a#logotype > img {
       height: 70px;
       margin-top: -10px; }
-  /* line 103, ../sass/screen.scss */
+  /* line 120, ../sass/screen.scss */
   header ul {
     list-style: none; }
-  /* line 106, ../sass/screen.scss */
+  /* line 123, ../sass/screen.scss */
   header #subNav {
     line-height: 0.8em;
     margin: 0.2em 0 0.2em 0; }
-    /* line 109, ../sass/screen.scss */
+    /* line 126, ../sass/screen.scss */
     header #subNav li {
       display: inline;
       padding: 0 0 0 1.6em;
       background: url(http://localhost:8080/SMShop/public/assets/img/bg_icons.png?10) no-repeat -41px -40px;
-      font-size: 0.9em;
+      font-size: 0.8em;
       letter-spacing: 0.12em;
       text-transform: uppercase; }
-      /* line 110, ../sass/screen.scss */
+      /* line 127, ../sass/screen.scss */
       header #subNav li:first-child {
         background: none; }
-      /* line 119, ../sass/screen.scss */
+      /* line 136, ../sass/screen.scss */
       header #subNav li a {
         text-decoration: none;
         color: #1a171b; }
-        /* line 122, ../sass/screen.scss */
+        /* line 139, ../sass/screen.scss */
         header #subNav li a:hover {
           text-decoration: underline; }
-  /* line 126, ../sass/screen.scss */
+  /* line 143, ../sass/screen.scss */
   header #nav {
     margin-top: 0.8em; }
-    /* line 128, ../sass/screen.scss */
+    /* line 145, ../sass/screen.scss */
     header #nav li {
       display: inline;
       padding: 0 0 0 1.3em;
@@ -167,10 +182,10 @@ header {
       font-weight: bold;
       letter-spacing: 0.2em;
       text-transform: uppercase; }
-      /* line 129, ../sass/screen.scss */
+      /* line 146, ../sass/screen.scss */
       header #nav li:first-child {
         background: none; }
-      /* line 139, ../sass/screen.scss */
+      /* line 156, ../sass/screen.scss */
       header #nav li a {
         display: inline;
         margin: 5px;
@@ -187,18 +202,19 @@ header {
         -o-transition-timing-function: ease-in;
         transition-timing-function: ease-in;
         text-decoration: none;
-        color: #333333; }
-        /* line 148, ../sass/screen.scss */
+        color: #333333;
+        text-shadow: 0px 0px 1px #aaaaaa; }
+        /* line 165, ../sass/screen.scss */
         header #nav li a:hover {
           color: #e74c3c;
           margin: 0 15px 0 15px; }
 
-/* line 158, ../sass/screen.scss */
+/* line 175, ../sass/screen.scss */
 div#main {
   position: relative;
   top: 126px;
   z-index: 2; }
-  /* line 162, ../sass/screen.scss */
+  /* line 179, ../sass/screen.scss */
   div#main div#content {
     min-height: 750px;
     margin-top: -1em;
@@ -209,32 +225,32 @@ div#main {
     box-shadow: #999999 0px 15px 40px;
     padding: 2em 2em 2em 2em; }
 
-/* line 174, ../sass/screen.scss */
+/* line 191, ../sass/screen.scss */
 div#content li.active {
   background: #e8e8e8; }
-/* line 177, ../sass/screen.scss */
+/* line 194, ../sass/screen.scss */
 div#content a {
   color: #1a171b; }
-/* line 186, ../sass/screen.scss */
+/* line 203, ../sass/screen.scss */
 div#content nav#nav_header {
   margin-bottom: 2em; }
-  /* line 188, ../sass/screen.scss */
+  /* line 205, ../sass/screen.scss */
   div#content nav#nav_header li {
     font-weight: bold; }
-/* line 195, ../sass/screen.scss */
+/* line 212, ../sass/screen.scss */
 div#content nav#categories ul#left_nav > li {
   margin-bottom: 1em; }
-  /* line 197, ../sass/screen.scss */
+  /* line 214, ../sass/screen.scss */
   div#content nav#categories ul#left_nav > li ul {
     font-weight: normal; }
-    /* line 199, ../sass/screen.scss */
+    /* line 216, ../sass/screen.scss */
     div#content nav#categories ul#left_nav > li ul li {
       padding-left: 1em; }
 
-/* line 208, ../sass/screen.scss */
+/* line 225, ../sass/screen.scss */
 div#products_container {
   margin: 1em 0 1em 0; }
-  /* line 210, ../sass/screen.scss */
+  /* line 227, ../sass/screen.scss */
   div#products_container div.products {
     padding: 1em;
     margin-top: 1em;
@@ -242,37 +258,37 @@ div#products_container {
     -webkit-box-shadow: lightgrey 0px 1px 2px;
     -moz-box-shadow: lightgrey 0px 1px 2px;
     box-shadow: lightgrey 0px 1px 2px; }
-    /* line 215, ../sass/screen.scss */
+    /* line 232, ../sass/screen.scss */
     div#products_container div.products:hover {
       -webkit-box-shadow: #999999 0px 1px 3px;
       -moz-box-shadow: #999999 0px 1px 3px;
       box-shadow: #999999 0px 1px 3px; }
-    /* line 218, ../sass/screen.scss */
+    /* line 235, ../sass/screen.scss */
     div#products_container div.products img {
       margin: auto;
       height: 13em; }
 
-/* line 225, ../sass/screen.scss */
+/* line 242, ../sass/screen.scss */
 div.info_container {
   margin: 1em 0 1em 0; }
-  /* line 228, ../sass/screen.scss */
+  /* line 245, ../sass/screen.scss */
   div.info_container table th {
     text-align: center !important; }
-  /* line 231, ../sass/screen.scss */
+  /* line 248, ../sass/screen.scss */
   div.info_container table td {
     text-align: center;
     vertical-align: middle; }
 
-/* line 238, ../sass/screen.scss */
+/* line 255, ../sass/screen.scss */
 footer {
   min-height: 100px;
   padding: 1em 0em 1em 0em;
   color: #333333;
   border-top: solid 1px #d3d3d3; }
-  /* line 243, ../sass/screen.scss */
+  /* line 260, ../sass/screen.scss */
   footer ul.social-links li {
     list-style: none; }
-    /* line 244, ../sass/screen.scss */
+    /* line 261, ../sass/screen.scss */
     footer ul.social-links li a {
       display: block;
       margin-left: 0.4em;
@@ -294,7 +310,7 @@ footer {
       -o-transition-timing-function: ease-in;
       transition-timing-function: ease-in; }
 
-/* line 260, ../sass/screen.scss */
+/* line 277, ../sass/screen.scss */
 div#mainpage img {
   -webkit-box-shadow: lightgrey 0px 1px 3px;
   -moz-box-shadow: lightgrey 0px 1px 3px;
@@ -302,7 +318,7 @@ div#mainpage img {
   width: 100%;
   margin-bottom: 2em; }
 
-/* line 268, ../sass/screen.scss */
+/* line 285, ../sass/screen.scss */
 div#loading_div {
   display: none;
   position: fixed;
@@ -313,78 +329,78 @@ div#loading_div {
   width: 100%;
   background: rgba(255, 255, 255, 0.8) url(../../assets/img/ajax-loader.gif) 50% 50% no-repeat; }
 
-/* line 282, ../sass/screen.scss */
+/* line 299, ../sass/screen.scss */
 body.loading {
   overflow: hidden; }
-  /* line 284, ../sass/screen.scss */
+  /* line 301, ../sass/screen.scss */
   body.loading div#loading_div {
     display: block; }
 
-/* line 289, ../sass/screen.scss */
+/* line 306, ../sass/screen.scss */
 section#products_header {
   margin-bottom: 1em;
   padding-left: 1em; }
 
-/* line 294, ../sass/screen.scss */
+/* line 311, ../sass/screen.scss */
 div#item_detail {
   padding-bottom: 1.5em; }
-  /* line 297, ../sass/screen.scss */
+  /* line 314, ../sass/screen.scss */
   div#item_detail div#slideshow ul {
     list-style: none; }
-  /* line 300, ../sass/screen.scss */
+  /* line 317, ../sass/screen.scss */
   div#item_detail div#slideshow a {
     text-decoration: none; }
-  /* line 304, ../sass/screen.scss */
+  /* line 321, ../sass/screen.scss */
   div#item_detail img {
     width: 100%;
     -webkit-box-shadow: lightgrey 0px 1px 2px;
     -moz-box-shadow: lightgrey 0px 1px 2px;
     box-shadow: lightgrey 0px 1px 2px; }
-    /* line 307, ../sass/screen.scss */
+    /* line 324, ../sass/screen.scss */
     div#item_detail img:hover {
       -webkit-box-shadow: #999999 0px 1px 3px;
       -moz-box-shadow: #999999 0px 1px 3px;
       box-shadow: #999999 0px 1px 3px; }
-  /* line 312, ../sass/screen.scss */
+  /* line 329, ../sass/screen.scss */
   div#item_detail div#thumbs ul {
     margin-top: 20px; }
-    /* line 314, ../sass/screen.scss */
+    /* line 331, ../sass/screen.scss */
     div#item_detail div#thumbs ul li {
       float: left;
       margin-bottom: 1em; }
-  /* line 321, ../sass/screen.scss */
+  /* line 338, ../sass/screen.scss */
   div#item_detail ul#size-ul li {
     display: inline; }
-    /* line 323, ../sass/screen.scss */
+    /* line 340, ../sass/screen.scss */
     div#item_detail ul#size-ul li span {
       cursor: pointer;
       font-family: "Helvetica Neue",Helvetica,Arial,sans-serif; }
-    /* line 328, ../sass/screen.scss */
+    /* line 345, ../sass/screen.scss */
     div#item_detail ul#size-ul li span.active {
       background: #2980b9; }
 
-/* line 336, ../sass/screen.scss */
+/* line 353, ../sass/screen.scss */
 div.cart_container {
   padding: 1em 2em;
   margin-bottom: 1.5em;
   -webkit-box-shadow: lightgrey 0px 0px 2px;
   -moz-box-shadow: lightgrey 0px 0px 2px;
   box-shadow: lightgrey 0px 0px 2px; }
-  /* line 340, ../sass/screen.scss */
+  /* line 357, ../sass/screen.scss */
   div.cart_container img {
     margin-top: 0.7em; }
-  /* line 341, ../sass/screen.scss */
+  /* line 358, ../sass/screen.scss */
   div.cart_container div.cart_header {
     border-bottom: 1px solid #d3d3d3;
     margin-bottom: 0.5em; }
-  /* line 346, ../sass/screen.scss */
+  /* line 363, ../sass/screen.scss */
   div.cart_container div.cartRemove a {
     text-decoration: underline !important;
     color: #1a171b; }
-    /* line 349, ../sass/screen.scss */
+    /* line 366, ../sass/screen.scss */
     div.cart_container div.cartRemove a:hover {
       text-decoration: none !important; }
 
-/* line 355, ../sass/screen.scss */
+/* line 372, ../sass/screen.scss */
 table#checkout_table th, table#checkout_table td {
   border: none; }

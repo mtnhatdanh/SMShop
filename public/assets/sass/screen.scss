@@ -15,6 +15,12 @@
 
 // Custom file
 
+@media (min-width: 1600px) {
+	.container {
+		width: 1570px;
+	}
+}
+
 html {
 	// height: 100%;
 	overflow-y: scroll;
@@ -25,6 +31,17 @@ body {
 	background-color: transparent;
 	color:#1a171b;
 	font-family: 'Lato', Calibri, Arial, sans-serif;
+}
+
+// scrol up jquery CSS
+/* Image style */
+#scrollUp {
+	bottom: 20px;
+	right: 20px;
+	height: 38px;  /* Height of image */
+	width: 38px; /* Width of image */
+	background: url(../../assets/img/top.png) no-repeat;
+
 }
 
 a {text-decoration: none;}
@@ -113,7 +130,7 @@ header {
 			display: inline;
 			padding: 0 0 0 1.6em;
 			background: url(http://localhost:8080/SMShop/public/assets/img/bg_icons.png?10) no-repeat -41px -40px;
-			font-size: 0.9em;
+			font-size: 0.8em;
 			letter-spacing: 0.12em;
 			text-transform: uppercase;
 			a {
@@ -144,7 +161,7 @@ header {
 				@include transition-timing-function(ease-in);
 				text-decoration: none;
 				color: #333333;
-				// @include single-text-shadow();
+				@include single-text-shadow();
 				&:hover {
 					color: #e74c3c;
 					margin: 0 15px 0 15px;

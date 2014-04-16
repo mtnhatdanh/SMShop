@@ -13,8 +13,8 @@
 <div class="container" id="content">
     <div class="row">
     	<div class="col-sm-12 text-center">
-    	    <h3>Địa điểm cửa hàng</h3>
-    	    SMShop/<span style="color:gray">Địa điểm cửa hàng</span>
+    	    <h3>Giới thiệu</h3>
+    	    SMShop/<span style="color:gray">Giới thiệu</span>
             <hr>
     	</div>
     </div>
@@ -24,7 +24,7 @@
                 <strong><em>Xin chào đón các bạn ghé thăm website S&M shop của chúng tôi</em></strong>      
             </p>
             <p>Chúng tôi xin trân trọng được giới thiệu:</p>
-            <p><strong><span style="color:#428bca">S&M Shop</span></strong> là Shop bán hàng online, chúng tôi chuyên doanh quần áo, giày dép  & phụ kiện cho trẻ em, đặc biệt quần áo cho bé từ  02 đến trên 14 tuổi với nhiều chủng loại và kiểu dáng đa dạng hợp thời trang.</p>
+            <p><strong><span style="color:#428bca">S&M Shop</span></strong> là Shop bán hàng online, chúng tôi chuyên doanh quần áo, giày dép  & phụ kiện cho trẻ em, đặc biệt quần áo cho bé từ  10 đến trên 14 tuổi với nhiều chủng loại và kiểu dáng đa dạng hợp thời trang.</p>
             <p>
                 Ngoài việc mẫu mã đẹp, hợp thời trang và giá cả hợp lý, chất lượng hàng hóa đảm bảo sức khỏe của các bé luôn là điều quan tâm hàng đầu của bạn và của chúng tôi, <strong><span style="color:#428bca">S&M Shop</span></strong>. Vì vậy 100% sản phẩm của S&M là từ những thương hiệu uy tín và hoàn toàn được nhập khẩu từ Mỹ như: <strong><span style="color:#c0392b">H&M, OLD NAVY, GAP, ZARA, CARTER, OSHKOSH, CRAZY8, FOREVER 21 ….</span></strong> sẽ đem lại sự yên tâm tuyệt đối cho các bậc phụ huynh. Tất cả đều do chính tay chủ Shop chọn lựa tỉ mỉ từng sản phẩm phù hợp với giá thành và thị hiếu thời trang của trẻ em Việt Nam.
             </p>

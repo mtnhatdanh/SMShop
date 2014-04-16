@@ -36,13 +36,17 @@
         <div class="row">
             <div class="col-sm-12">
                 <div class="page-header">
-                    <h1>SMShop <small>-- Mail to pax --</small></h1>
+                    <h1>SMShop <small>-- Confirm order --</small></h1>
                 </div>
             </div>
         </div>
         <div class="row">
             <div class="col-sm-12">
-                <em>Your order detail:</em><br/>
+                <p>
+                    <span style="color:#428bca">S&M Shop</span> đã nhận được đơn hàng của quý khách.<br/>
+                    Chúng tôi đang kiểm hàng, và sẽ tiến hành giao hàng cho quý khách trong vòng 24 giờ.
+                </p>
+                <em>Chi tiết đơn hàng:</em><br/>
                 <table class="table table-responsive" id="mail-table">
                     <tr>
                         <td>No</td>
@@ -85,12 +89,14 @@
                     </tr>
                 </table>
                 <p>
-                    <em>Your note:</em> {{$note}}
+                    <em>Ghi chú của bạn:</em> {{$note}}
                 </p>
                 <p>
-                    Your order has been received and will be processed on 24 hours. Thank you!!
+                    <span style="color:#428bca">S&M Shop</span> xin cảm ơn.<br/>
+                    212B/D8 Nguyễn Trãi, F.Nguyễn Cư Trinh, Q.1, TP.HCM.<br/>
+                    Để liên hệ bộ phận dịch vụ khách hàng, vui lòng gọi 08-38361962.<br/>
+                    <a href="www.hanghieuchobeyeu.com" style="color:#c0392b">www.hanghieuchobeyeu.com</a>
                 </p>
-                <strong>SM Shop</strong>
             </div>
         </div>
     </div>

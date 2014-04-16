@@ -12,20 +12,20 @@ Shoping Guilde
         </nav>
         <nav id="categories">
             <ul id="left_nav">
-                <li class="category_li">
+                <li class="category_li" id="a">
                     <a class="category_a ajax-a" href="{{asset('info/size-reference')}}">Tra size quần áo, giầy dép</a></span>
                 </li>
                 <li class="category_li">
-                    <a class="category_a ajax-a" href="#">Cách mua hàng</a></span>
+                    <a class="category_a ajax-a" href="{{asset('info/how-to-buy')}}">Cách mua hàng</a></span>
                 </li>
                 <li class="category_li">
-                    <a class="category_a ajax-a" href="#">Phương thức thanh toán</a></span>
+                    <a class="category_a ajax-a" href="{{asset('info/payment-method')}}">Phương thức thanh toán</a></span>
                 </li>
                 <li class="category_li">
-                    <a class="category_a ajax-a" href="#">Chính sách giao nhận, đổi trả hàng</a></span>
+                    <a class="category_a ajax-a" href="{{asset('info/delivery-policy')}}">Chính sách giao nhận, đổi trả hàng</a></span>
                 </li>
                 <li class="category_li">
-                    <a class="category_a ajax-a" href="#">Mua hộ hàng trên Web US</a></span>
+                    <a class="category_a ajax-a" href="{{asset('info/buy-on-us-web')}}">Mua hộ hàng trên Web US</a></span>
                 </li>
             </ul>
         </nav>  
@@ -60,7 +60,7 @@ Shoping Guilde
         var $trig = $('nav#categories ul');
         $trigger = $trig.find('a.category_a');     
         $trigger.click(function () {
-            $current_li = $(this).next('li');
+            $current_li = $(this).parent('li');
             $('.category_li').removeClass('active');
             $current_li.addClass('active');
         });
