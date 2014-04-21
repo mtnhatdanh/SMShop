@@ -36,7 +36,7 @@
 				</ul>
 			</li>
 		</ol>
-		<h4>CHÍNH SÁCH GIAO NHẬN HÀNG</h4>
+		<h4>CHÍNH SÁCH ĐỔI TRẢ HÀNG</h4>
 		<p>Chính sách đổi trả hàng của S&M Shop trong vòng 02 ngày sau khi nhận hàng, bạn có thể đổi hoặc trả hàng với các điều kiện như sau:</p>
 		<ol class="delivery-ol">
 			<li>Sản phẩm phải trong tình trạng nguyên trạng như khi S&M Shop giao sản phẩm cho Quý khách, chưa sử dụng, chưa bóc hộp hoặc tem & còn mới 100% kể từ lúc mua & còn nguyên đóng gói.</li>

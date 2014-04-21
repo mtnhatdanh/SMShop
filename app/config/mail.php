@@ -28,7 +28,7 @@ return array(
 	|
 	*/
 
-	'host' => 'smtp.gmail.com',
+	'host' => 'smtp.mail.yahoo.com',
 
 	/*
 	|--------------------------------------------------------------------------
@@ -41,7 +41,7 @@ return array(
 	|
 	*/
 
-	'port' => 587,
+	'port' => 465,
 
 	/*
 	|--------------------------------------------------------------------------
@@ -54,7 +54,7 @@ return array(
 	|
 	*/
 
-	'from' => array('address' => 'minhgiang0801@outlook.com', 'name' => 'Minh Giang'),
+	'from' => array('address' => 'hanghieuchobeyeu@yahoo.com', 'name' => 'SMShop'),
 
 	/*
 	|--------------------------------------------------------------------------
@@ -67,7 +67,7 @@ return array(
 	|
 	*/
 
-	'encryption' => 'tls',
+	'encryption' => 'ssl',
 
 	/*
 	|--------------------------------------------------------------------------
@@ -80,7 +80,7 @@ return array(
 	|
 	*/
 
-	'username' => 'mtnhatdanh@gmail.com',
+	'username' => 'hanghieuchobeyeu@yahoo.com',
 
 	/*
 	|--------------------------------------------------------------------------
@@ -93,7 +93,7 @@ return array(
 	|
 	*/
 
-	'password' => 'finalfantasy1412',
+	'password' => 'Setuthungmay05',
 
 	/*
 	|--------------------------------------------------------------------------
@@ -120,5 +120,6 @@ return array(
 	*/
 
 	'pretend' => false,
+
 
 );

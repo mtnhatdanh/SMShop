@@ -10,9 +10,9 @@ $attLink       = $item->itemAtt->name;
 		    <h3>{{ucfirst($category_name)}}</h3>
 		    <span style="text-decoration: underline;">SM Shop</span> / 
 		    <span style="color:gray">
-			    <a class="item-ajax-a" href="{{Asset('category/'.$category_name.'/view-all')}}">{{ucfirst($category_name)}}</a> 
-			    @if ($typeLink != 'view-all') / <a href="">{{ucfirst($typeLink)}}</a> @endif
-			    @if (isset($attLink)) / <a href="">{{ucfirst($attLink)}}</a> @endif
+			    <a class="ajax-b" href="{{Asset('category/'.$category_name.'/view-all')}}">{{ucfirst($category_name)}}</a> 
+			    @if ($typeLink != 'view-all') / <a class="ajax-b" href="{{Asset('category/'.$category_name.'/'.$item->itemAtt->itemType->id)}}">{{ucfirst($typeLink)}}</a> @endif
+			    @if (isset($attLink)) / <a class="ajax-b" href="{{asset('category/'.$category_name.'/'.$item->itemAtt->itemType->id.'/att/'.$item->itemAtt->id)}}">{{ucfirst($attLink)}}</a> @endif / <span style="color:gray">{{$item->name}}</span>
 		    </span>
 		</section>
 	</div>
@@ -78,6 +78,7 @@ $attLink       = $item->itemAtt->name;
 		</p>
 		<p style="margin-top:1em">
 			<button type="button" class="btn btn-default add-to-cart">Mua hàng</button>
+			<a href="{{asset('category/'.$category_name.'/'.$item->itemAtt->itemType->id.'/att/'.$item->itemAtt->id)}}" class="ajax-b"><button type="button" class="btn btn-default" style="margin-left: 1em">Trở về</button></a>
 		</p>
 	</div>
 </div>
@@ -176,5 +177,14 @@ $attLink       = $item->itemAtt->name;
 	        onImageRemoved:            undefined  // accepts a delegate like such: function(imageData, $li) { ... }
 	    });
 	});
+
+	// link a ajax
+    $('.ajax-b').click(function(){
+        url = $(this).attr('href');
+        $.get(url, function(data){
+            $('#div-content').html(data);
+        });
+        return false;
+    });
 </script>
 

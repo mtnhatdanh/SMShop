@@ -38,7 +38,7 @@ Welcome to SM Shop - Sale
                 </div>
                 <div class="row" id="products_container">
                     <div class="col-sm-12">
-                        <img src="{{Asset('assets/img/sale.jpeg')}}" class="img-responsive" alt="Image" style="width:100%">
+                        <img src="{{Asset('assets/img/SALE.jpg')}}" class="img-responsive" alt="Image" style="width:100%">
                     </div>
                 </div>
             </div > 

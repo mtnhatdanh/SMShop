@@ -415,7 +415,8 @@
       }
 
       $('#notification-modal').on('hidden.bs.modal', function(e){
-        location.reload();
+        var pathname = window.location.pathname;
+        location.reload(pathname);
       })
 
       // jquery for loading gif

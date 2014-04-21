@@ -15,9 +15,9 @@ Check out - finish
     </div>
     <div class="row" style="margin: 1em 0.7em 0em 0.7em; min-height: 30em">
 	    <div class="col-sm-12 text-center" style="margin-top: 3em;">
-	    	<p>Thank you for buying SMShop's products.<br/>
-            Your order has been received and will be processed on 24 hourse.</p>
-            <a href="{{asset('/')}}"><button class="btn btn-default">Back to home page</button></a>
+	    	<p>Cảm ơn quý khách đã lựa chọn sản phẩm của S&M Shop.<br/>
+            Chúng tôi đã nhận đơn hàng của quý khách, sẽ tiến hành xác nhận và giao hàng trong vòng 24 giờ.</p>
+            <a href="{{asset('/')}}"><button class="btn btn-default">TRỞ VỀ TRANG CHỦ</button></a>
 	    </div>
 	</div>
     @include('footer')

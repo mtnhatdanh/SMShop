@@ -186,7 +186,7 @@ Route::filter('check_signin', function(){
 
 Route::get('checkout-login', function(){
 	if (Session::has('pax')) {
-		return Redirect::to('/');
+		return Redirect::to('check-out');
 	} else return View::make('checkout-login');
 });
 
@@ -248,7 +248,10 @@ Route::post('check-out-confirm', function(){
 
 		// Send mail to passenger
 		Mail::send('mail-check-out', $data, function($message){
-			$message->to(Session::get('pax'), 'SMShop Passenger')->subject('ORDER CONFIRMATION/XÁC NHẬN ĐƠN HÀNG');
+			$message->to(Session::get('pax'), 'SMShop Customer')->subject('ORDER CONFIRMATION/XÁC NHẬN ĐƠN HÀNG
+				');
+			$message->to('hanghieuchobeyeu@yahoo', 'SMShop')->subject('ORDER CONFIRMATION/XÁC NHẬN ĐƠN HÀNG
+				');
 		});
 		// return Redirect::to('check-out-finish');
 	}
@@ -390,7 +393,7 @@ Route::post('sign-up', function(){
 			$message->to(Input::get('email'), 'SMShop Passenger')->subject('Welcome to SM Shop!!');
 		});
 
-		return "Your account has been created!!";
+		return "Chúc mừng bạn đã đăng ký thành công!!";
 	}
 });
 
@@ -412,6 +415,13 @@ Route::post('sign-in', function(){
 });
 
 Route::get('test', function(){
+
+	Cache::forget('cart');
+
+	// Mail::send('test', array('abc'=>'abc'), function($message){
+	// 		$message->to('mtnhatdanh@gmail.com', 'Minh giang')->subject('Welcome to SM Shop!!');
+		// });
+	
 
 	// $pax = Pax::where('email', '=', Session::get('pax'))->first();
 	// Session::forget('pax');

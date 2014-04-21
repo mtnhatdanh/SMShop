@@ -3,7 +3,7 @@
         <div class="row">               
             <footer style="margin:0em 2em 0em 2em">
                 <div style="width:50%; float:left">
-                    <span>Copyright © 2014, design by: Minh Giang</span>
+                    <span>Copyright © 2014, design by: <a href="mailto:minhgiang0801@outlook.com">Minh Giang</a></span>
                 </div>
                 <div style="width:50%; float:right">
                     <ul class="social-links clearfix list-unstyled">

@@ -274,10 +274,29 @@ footer {
 }
 
 div#mainpage {
+	a {text-decoration: none;}
 	img {
 		@include box-shadow(#d3d3d3 0px 1px 3px);
 		width: 100%;
 		margin-bottom: 2em;
+		&:hover {
+			@include box-shadow(#999 0px 1px 3px);
+		}
+	}
+	div.mainpage-div {
+		@include box-shadow(#d3d3d3 0px 1px 3px);
+		color: #e74c3c;
+		padding: 2em 0 2em 0;
+		height: 20em;
+		&:hover {
+			@include box-shadow(#999 0px 1px 3px);
+		}
+		a {
+			color: #e74c3c;
+			&:hover {
+				color: #2980b9;
+			}
+		}
 	}
 }
 

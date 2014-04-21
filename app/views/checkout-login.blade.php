@@ -16,7 +16,7 @@ Login page
     <div class="row" style="margin: 1em 0.7em 0em 0.7em; min-height: 30em">
 	    <div class="col-sm-12 text-center" style="margin-top: 3em;">
 	    	<span>Vui lòng <a href="javascript:{}" onclick="showLogin()" style="color:#428bca">đăng nhập</a> để tiếp tục thanh toán.</span><br/>
-            <span>Nếu bạn chưa đăng ký thành viên, vui lòng đăng ký tại <a href="javascript:{}" onclick="showNewAccount()" style="color:#428bca">ĐÂY</a>!!</span>
+            <span>Nếu bạn chưa đăng ký thành viên, vui lòng đăng ký <a href="javascript:{}" onclick="showNewAccount()" style="color:#428bca">TẠI ĐÂY</a>!!</span>
 	    </div>
 	</div>
     @include('footer')

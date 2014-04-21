@@ -43,7 +43,7 @@
                     Chúng tôi sẽ liên tục cập nhật đến bạn tất cả các sản phẩm và chương trình khuyến mại HOT nhất của <strong><span style="color:#428bca">S&M Fashion</span></strong>.
                 </p>
                 <p>
-                    Bạn đã sỡ hữu phiếu giảm giá 20% cho một (01) sản phẩm bất kỳ nào của <strong><span style="color:#428bca">S&M Shop</span></strong>.<br/>
+                    Bạn đã sỡ hữu phiếu giảm giá 10% khi mua một (01) sản phẩm bất kỳ nào của <strong><span style="color:#428bca">S&M Shop</span></strong>.<br/>
                     Nếu bạn mua nhiều sản phẩm trên cùng 1 đơn hàng, sản phẩm có giá trị cao nhất sẽ được áp dụng giảm giá.<br/>
                     Phiếu quà tặng này có giá trị 15 ngày kể từ ngày bạn nhận được email này.
                 </p>
